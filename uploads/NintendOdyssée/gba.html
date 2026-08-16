@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Boy Advance — Mon Périple Vidéoludique</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme-gba.css">
+</head>
+<body data-console="gba">
+
+<header class="site-header">
+  <a class="back-link" href="index.html">← Accueil</a>
+  <div class="console-notch"></div>
+  <h1 class="site-title">GAME BOY <span>ADVANCE</span></h1>
+  <nav class="console-nav">
+    <span class="console-chip active">GBA</span>
+    <span class="console-chip disabled">DS</span>
+    <span class="console-chip disabled">3DS</span>
+    <span class="console-chip disabled">GameCube</span>
+  </nav>
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span id="progress-text">0 / 0 terminés</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+</header>
+
+<main id="list"></main>
+
+<footer class="site-footer">
+  Notes Metacritic (U = utilisateurs, C = critique si pas de note utilisateurs) et durées HowLongToBeat approximatives.
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  LUDO.renderConsoleList(
+    'gba',
+    document.getElementById('list'),
+    document.getElementById('progress-fill'),
+    document.getElementById('progress-text'),
+    document.getElementById('progress-pct')
+  );
+</script>
+</body>
+</html>

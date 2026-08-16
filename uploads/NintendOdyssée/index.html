@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Périple Vidéoludique</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme-gba.css">
+</head>
+<body data-console="home">
+
+<header class="site-header">
+  <div class="console-notch"></div>
+  <h1 class="site-title">MON PÉRIPLE <span>VIDÉOLUDIQUE</span></h1>
+</header>
+
+<section class="hero" id="hero"></section>
+
+<main>
+  <div class="console-grid" id="console-grid"></div>
+</main>
+
+<footer class="site-footer">
+  Notes Metacritic (utilisateurs, ou critique si indisponible) et durées HowLongToBeat approximatives.<br>
+  Les coches et le jeu "en cours" sont sauvegardés dans ce navigateur.
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  LUDO.renderHomeHero(document.getElementById('hero'));
+  LUDO.renderHomeConsoleGrid(document.getElementById('console-grid'));
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* Thème GBA — coque translucide indigo/violet, écran LCD vert */
+:root{
+  --bg-a: #4b3f72;
+  --bg-b: #1c1530;
+  --bg-c: #4b3f72;
+  --text: #f2ecff;
+  --muted: #b9a9e8;
+  --muted-soft: #d8cef2;
+  --accent: #8fae52;
+  --accent-dark: #46592a;
+  --card-bg: rgba(255,255,255,.05);
+  --card-border: rgba(185,169,232,.25);
+  --pill-bg: rgba(185,169,232,.15);
+  --score-hi: #6dbf6d;
+  --score-mid: #d9b04c;
+  --score-lo: #d97757;
+  --done: #7fbf7f;
+  --font-display: 'Courier New', monospace;
+  --title-transform: uppercase;
+  --title-tracking: 2px;
+}
+
+/* Encoche console décorative, clin d'oeil à la coque GBA */
+.console-notch{
+  width: 60px; height: 6px;
+  background: var(--bg-b);
+  border-radius: 4px;
+  margin: 0 auto 14px;
+  opacity: .6;
+}

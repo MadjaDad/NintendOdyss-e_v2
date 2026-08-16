@@ -1,0 +1,410 @@
+/* ===========================================================
+   Style partagé — Mon Périple Vidéoludique
+   Les couleurs/typo sont pilotées par des variables CSS.
+   Chaque page console charge ce fichier PUIS son propre
+   theme-<console>.css qui redéfinit les variables ci-dessous.
+   =========================================================== */
+
+:root{
+  /* Thème par défaut (neutre) — chaque theme-*.css le redéfinit */
+  --bg-a: #2c2340;
+  --bg-b: #1c1530;
+  --bg-c: #4b3f72;
+  --text: #f2ecff;
+  --muted: #b9a9e8;
+  --muted-soft: #d8cef2;
+  --accent: #8fae52;
+  --accent-dark: #46592a;
+  --card-bg: rgba(255,255,255,.05);
+  --card-border: rgba(185,169,232,.25);
+  --pill-bg: rgba(185,169,232,.15);
+  --score-hi: #6dbf6d;
+  --score-mid: #d9b04c;
+  --score-lo: #d97757;
+  --done: #7fbf7f;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --title-transform: none;
+  --title-tracking: normal;
+  --radius: 14px;
+}
+
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  background: radial-gradient(circle at 50% -10%, var(--bg-c) 0%, var(--bg-a) 45%, var(--bg-b) 100%);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+a{ color: inherit; text-decoration: none; }
+
+/* ---------- Header / nav commun ---------- */
+
+.site-header{
+  padding: 22px 20px 14px;
+  text-align:center;
+}
+
+.site-title{
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: var(--title-tracking);
+  text-transform: var(--title-transform);
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+  color: var(--muted-soft);
+}
+
+.site-title span{ color: var(--accent); }
+
+.back-link{
+  display:inline-block;
+  font-size: .78rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+  opacity: .85;
+}
+.back-link:hover{ opacity: 1; }
+
+.console-nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap: 8px;
+  max-width: 520px;
+  margin: 0 auto 6px;
+}
+
+.console-chip{
+  font-family: var(--font-display);
+  font-size: .68rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.04);
+  color: var(--muted);
+}
+.console-chip.active{
+  background: var(--accent);
+  color: var(--bg-b);
+  border-color: var(--accent);
+  font-weight:700;
+}
+.console-chip.disabled{
+  opacity: .35;
+  pointer-events: none;
+}
+
+main{
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 14px;
+}
+
+/* ---------- Progress bar ---------- */
+
+.progress-wrap{
+  max-width: 480px;
+  margin: 14px auto 0;
+  background: var(--bg-b);
+  border: 2px solid var(--accent-dark);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.progress-label{
+  display:flex;
+  justify-content: space-between;
+  font-size: .72rem;
+  font-family: var(--font-display);
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.progress-track{
+  height: 10px;
+  background: rgba(0,0,0,.35);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--bg-b);
+}
+
+.progress-fill{
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  width: 0%;
+  transition: width .35s ease;
+}
+
+/* ---------- Year dividers ---------- */
+
+.year-divider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin: 26px 6px 10px;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: 2px;
+}
+.year-divider:first-child{ margin-top: 18px; }
+.year-divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background: linear-gradient(90deg, var(--muted), transparent);
+  opacity:.4;
+}
+
+/* ---------- Game card ---------- */
+
+.game-card{
+  background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,0));
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  display:flex;
+  gap: 12px;
+  align-items:flex-start;
+  transition: opacity .2s;
+}
+
+.game-card.done{ opacity: .5; }
+.game-card.done .game-title{
+  text-decoration: line-through;
+  text-decoration-color: var(--done);
+}
+.game-card.playing{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+.check-btn{
+  appearance:none; -webkit-appearance:none;
+  width: 26px; height: 26px; min-width:26px;
+  border-radius: 7px;
+  border: 2px solid var(--muted);
+  background: transparent;
+  margin-top: 2px;
+  cursor:pointer;
+  position:relative;
+}
+.check-btn.checked{ background: var(--done); border-color: var(--done); }
+.check-btn.checked::after{
+  content:"✓";
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--bg-b);
+  font-size: .95rem; font-weight:900;
+}
+
+.game-card-body{ flex:1; min-width:0; }
+
+.game-title{
+  font-size: .96rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height:1.25;
+  margin-bottom: 5px;
+}
+
+.meta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 6px;
+  align-items:center;
+}
+
+.pill{
+  font-size: .68rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-family: var(--font-display);
+  white-space:nowrap;
+}
+.pill.date{ background: var(--pill-bg); color: var(--muted-soft); }
+.pill.hltb{ background: rgba(143,174,82,.2); color: var(--accent); }
+
+.pill.score{ color: var(--bg-b); font-weight:800; }
+.pill.score.hi{ background: var(--score-hi); }
+.pill.score.mid{ background: var(--score-mid); }
+.pill.score.lo{ background: var(--score-lo); }
+.pill.score.na{ background: var(--pill-bg); color: var(--muted-soft); font-weight:600; }
+.pill.score sup{ font-size: .62em; margin-left:1px; opacity:.8; }
+
+.playing-btn{
+  appearance:none; -webkit-appearance:none;
+  border: 1px solid var(--muted);
+  background: transparent;
+  color: var(--muted-soft);
+  font-family: var(--font-display);
+  font-size: .64rem;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 20px;
+  cursor:pointer;
+  margin-top: 6px;
+}
+.playing-btn.active{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-b);
+  font-weight: 700;
+}
+
+/* ---------- Cover art + fallback ---------- */
+
+.cover{
+  position:relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+  overflow:hidden;
+  background: var(--bg-b);
+  border: 1px solid var(--card-border);
+}
+.cover img{
+  width:100%; height:100%; object-fit: cover; display:block;
+}
+.cover-fallback{
+  position:absolute; inset:0;
+  display:none;
+  align-items:center; justify-content:center;
+  text-align:center;
+  padding: 14px;
+  background: linear-gradient(160deg, var(--bg-c), var(--bg-b));
+}
+.cover-fallback span{
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: .92rem;
+  color: var(--muted-soft);
+  line-height:1.3;
+  text-transform: var(--title-transform);
+}
+
+/* ---------- Homepage hero ---------- */
+
+.hero{
+  max-width: 560px;
+  margin: 18px auto 8px;
+  padding: 0 14px;
+}
+
+.hero-card{
+  display:flex;
+  gap: 16px;
+  background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.hero-cover{ width: 110px; flex-shrink:0; }
+
+.hero-body{ flex:1; min-width:0; }
+
+.hero-eyebrow{
+  font-family: var(--font-display);
+  font-size: .66rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.hero-title{
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  line-height:1.2;
+}
+
+.hero-console{
+  font-family: var(--font-display);
+  font-size: .65rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.hero-blurb{
+  font-size: .85rem;
+  color: var(--muted-soft);
+  line-height:1.5;
+  margin-bottom: 10px;
+}
+
+.hero-empty{
+  text-align:center;
+  padding: 30px 20px;
+  border: 1px dashed var(--card-border);
+  border-radius: 18px;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+/* ---------- Console nav cards (home) ---------- */
+
+.console-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 560px;
+  margin: 18px auto 0;
+  padding: 0 14px;
+}
+
+.console-card{
+  border-radius: 16px;
+  padding: 16px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  position:relative;
+  overflow:hidden;
+  min-height: 110px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.console-card.disabled{ opacity:.45; }
+
+.console-card-name{
+  font-weight: 800;
+  font-size: .95rem;
+}
+
+.console-card-progress{
+  font-family: var(--font-display);
+  font-size: .68rem;
+  opacity:.85;
+  margin-top: 8px;
+}
+
+.console-card-soon{
+  font-family: var(--font-display);
+  font-size: .6rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-top:8px;
+  opacity:.8;
+}
+
+footer.site-footer{
+  text-align:center;
+  font-size: .68rem;
+  color: var(--muted);
+  opacity:.6;
+  margin-top: 34px;
+  padding: 0 24px;
+  line-height:1.5;
+}

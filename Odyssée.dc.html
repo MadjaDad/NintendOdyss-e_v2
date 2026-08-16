@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./odyssey-data.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odyssée — carnet vidéoludique</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/nocturne-1ce26975-72f2-4771-9672-1042d48328d7/styles.css">
+<script src="_ds/nocturne-1ce26975-72f2-4771-9672-1042d48328d7/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  html, body { margin: 0; background: var(--color-bg); }
+  a { color: var(--color-accent); }
+  a:hover { color: var(--color-accent-300); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: var(--color-neutral-800); border-radius: 8px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  @keyframes odySlide { from { transform: translateX(28px); opacity: 0 } to { transform: none; opacity: 1 } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);padding-bottom:80px">
+
+  <div style="position:sticky;top:0;z-index:40;background:color-mix(in srgb, var(--color-bg) 88%, transparent);backdrop-filter:blur(14px)">
+    <div style="max-width:1140px;margin:0 auto;padding:16.8px 22.4px;display:flex;flex-wrap:wrap;gap:11.2px 22.4px;align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:2.8px;margin-right:auto">
+        <div style="font-family:var(--font-heading);font-weight:500;font-size:19px;letter-spacing:-.015em">Odyssée</div>
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent)">carnet de voyage vidéoludique</div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:5.6px;align-items:center">
+        <sc-for list="{{ consoles }}" as="c" hint-placeholder-count="4">
+          <button onClick="{{ c.onPick }}" style="{{ c.style }}">
+            <span style="{{ c.badgeStyle }}">{{ c.short }}</span>
+            <span>{{ c.name }}</span>
+            <span style="{{ c.metaStyle }}">{{ c.meta }}</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="height:1px;background:linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent)"></div>
+  </div>
+
+  <div style="max-width:1140px;margin:0 auto;padding:0 22.4px">
+
+    <div style="display:flex;flex-wrap:wrap;gap:33.6px;padding:44.8px 0 33.6px">
+      <div style="flex:1 1 380px;min-width:290px;display:flex;flex-direction:column;gap:22.4px">
+        <div>
+          <h1 style="font-size:clamp(34px,4.6vw,50px);margin:0 0 11.2px">{{ header.title }}</h1>
+          <p style="font-size:14px;line-height:1.6;max-width:44ch;color:color-mix(in srgb, var(--color-text) 62%, transparent);text-wrap:pretty;margin:0">{{ header.sub }}</p>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:8.4px">
+            <span>progression</span>
+            <span style="color:var(--color-accent);font-family:var(--font-heading);font-size:13px;letter-spacing:.02em">{{ stats.pct }}</span>
+          </div>
+          <div style="height:4px;border-radius:4px;background:var(--color-neutral-800);overflow:hidden">
+            <div style="{{ barStyle }}"></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:5.6px;margin-top:11.2px">
+            <sc-for list="{{ stats.tags }}" as="t" hint-placeholder-count="4">
+              <span class="tag tag-outline">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1 1 320px;min-width:280px">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:8.4px">en ce moment</div>
+        <sc-if value="{{ hero }}" hint-placeholder-val="{{ true }}">
+          <div onClick="{{ hero.onOpen }}" class="card elev-sm" style="flex-direction:row;gap:16.8px;padding:16.8px;cursor:pointer;background:linear-gradient(140deg, var(--color-accent-900), var(--color-surface))">
+            <div style="width:88px;height:120px;flex:none;border-radius:8px;overflow:hidden;background:var(--color-neutral-900)">
+              <image-slot id="{{ hero.slotId }}" shape="rounded" radius="8" placeholder="jaquette"></image-slot>
+            </div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5.6px">
+              <div class="card-title">{{ hero.title }}</div>
+              <div class="card-meta">{{ hero.line }}</div>
+              <div style="font-size:13px;line-height:1.55;color:color-mix(in srgb, var(--color-text) 70%, transparent)">{{ hero.blurb }}</div>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ heroEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:28px 19px;border:1px solid var(--color-divider);border-radius:8px;font-size:13px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 50%, transparent)">Aucune étape en cours. Ouvre un jeu et marque-le « en cours » : il s'affichera ici.</div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:11.2px 16.8px;align-items:center;padding-bottom:8.4px">
+      <div class="seg">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button onClick="{{ f.onPick }}" style="{{ f.style }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <input value="{{ q }}" onChange="{{ onSearch }}" class="input" placeholder="Chercher un titre…" style="flex:0 1 210px;margin-left:auto" />
+    </div>
+    <div style="height:1px;background:linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent);margin-bottom:5.6px"></div>
+
+    <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:90px 22.4px;text-align:center;color:color-mix(in srgb, var(--color-text) 45%, transparent);font-size:15px">{{ emptyMsg }}</div>
+    </sc-if>
+
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+      <div style="display:flex;flex-wrap:wrap;padding:28px 0 0">
+        <div style="flex:0 0 140px;min-width:140px;padding-top:11.2px">
+          <div style="font-family:var(--font-heading);font-weight:300;font-size:44px;line-height:.9;letter-spacing:-.03em;color:var(--color-neutral-700)">{{ g.label }}</div>
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 40%, transparent);margin-top:8.4px">{{ g.sub }}</div>
+        </div>
+        <div style="flex:1 1 320px;min-width:270px">
+          <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="6">
+            <div onClick="{{ it.onOpen }}" style="{{ it.rowStyle }}" style-hover="background:color-mix(in srgb, var(--color-text) 5%, transparent)">
+              <div style="{{ it.markStyle }}"></div>
+              <div style="flex:0 0 30px;font-size:11px;letter-spacing:.04em;color:color-mix(in srgb, var(--color-text) 35%, transparent);padding-top:2.8px">{{ it.step }}</div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5.6px">
+                <div style="{{ it.titleStyle }}">{{ it.title }}</div>
+                <div style="display:flex;flex-wrap:wrap;gap:5.6px;align-items:center">
+                  <span style="font-size:11px;color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{ it.dateLabel }}</span>
+                  <span style="{{ it.scoreStyle }}">{{ it.scoreText }}</span>
+                  <span style="{{ it.hltbStyle }}">{{ it.hltb }}</span>
+                  <span style="{{ it.statusStyle }}">{{ it.statusLabel }}</span>
+                  <span style="{{ it.myStyle }}">{{ it.myLabel }}</span>
+                </div>
+                <div style="{{ it.blurbStyle }}">{{ it.blurb }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+
+    <div style="height:1px;background:linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent);margin:56px 0 16.8px"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:11.2px;align-items:center;font-size:11.5px;color:color-mix(in srgb, var(--color-text) 45%, transparent)">
+      <span style="margin-right:auto">Progression enregistrée dans ce navigateur.</span>
+      <button onClick="{{ onExport }}" class="btn btn-secondary">Exporter</button>
+      <label class="btn btn-secondary" style="cursor:pointer">Importer
+        <input type="file" accept="application/json" onChange="{{ onImport }}" style="display:none" />
+      </label>
+    </div>
+  </div>
+
+  <sc-if value="{{ sel }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end">
+      <div onClick="{{ onClose }}" style="position:absolute;inset:0;background:color-mix(in srgb, var(--color-neutral-900) 62%, transparent);backdrop-filter:blur(3px)"></div>
+      <div style="position:relative;width:min(440px,100vw);height:100dvh;overflow-y:auto;background:var(--color-surface);box-shadow:var(--shadow-lg);animation:odySlide .22s ease-out">
+        <div style="padding:22.4px 22.4px 44.8px;display:flex;flex-direction:column;gap:22.4px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:11.2px">
+            <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent)">{{ sel.step }} · {{ sel.consoleName }}</span>
+            <button onClick="{{ onClose }}" class="btn btn-secondary btn-icon" aria-label="Fermer">✕</button>
+          </div>
+
+          <div style="display:flex;gap:16.8px">
+            <div style="width:116px;height:158px;flex:none;border-radius:8px;overflow:hidden;background:var(--color-neutral-900)">
+              <image-slot id="{{ sel.slotId }}" shape="rounded" radius="8" placeholder="Dépose la jaquette"></image-slot>
+            </div>
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:8.4px">
+              <h3 style="font-size:20px;margin:0">{{ sel.title }}</h3>
+              <div class="card-meta">{{ sel.dateLabel }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:5.6px">
+                <span style="{{ sel.scoreStyle }}">{{ sel.scoreText }}</span>
+                <span class="tag tag-outline">{{ sel.hltb }}</span>
+              </div>
+            </div>
+          </div>
+
+          <p style="font-size:14px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 72%, transparent);margin:0">{{ sel.blurb }}</p>
+
+          <div style="height:1px;background:linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent)"></div>
+
+          <div>
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:8.4px">où j'en suis</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5.6px">
+              <sc-for list="{{ sel.statuses }}" as="st" hint-placeholder-count="4">
+                <button onClick="{{ st.onPick }}" style="{{ st.style }}">{{ st.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:8.4px">ma note</div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px">
+              <sc-for list="{{ sel.ratings }}" as="r" hint-placeholder-count="10">
+                <button onClick="{{ r.onPick }}" style="{{ r.style }}">{{ r.n }}</button>
+              </sc-for>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Terminé le</label>
+            <input type="date" value="{{ sel.finishedOn }}" onChange="{{ sel.onDate }}" class="input" style="color-scheme:dark" />
+          </div>
+
+          <div class="field">
+            <label>Mes impressions</label>
+            <textarea value="{{ sel.note }}" onChange="{{ sel.onNote }}" class="input" placeholder="Ce que ce jeu t'a laissé…" style="min-height:110px;resize:vertical;line-height:1.6"></textarea>
+          </div>
+
+          <div style="display:flex;gap:8.4px">
+            <button onClick="{{ sel.onPrev }}" class="btn btn-secondary btn-block" style="margin:0">← Précédent</button>
+            <button onClick="{{ sel.onNext }}" class="btn btn-secondary btn-block" style="margin:0">Suivant →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;confort&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;confort&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;showBlurbs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;showScores&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;}}">
+class Component extends DCLogic {
+  state = { data: null, ck: 'gba', sel: null, filter: 'tous', q: '', prog: {} };
+
+  statusDefs = [
+    { id: 'todo', label: 'À faire' },
+    { id: 'playing', label: 'En cours' },
+    { id: 'done', label: 'Terminé' },
+    { id: 'dropped', label: 'Abandonné' }
+  ];
+
+  componentDidMount() {
+    this.setState({ data: window.ODYSSEY_DATA });
+    try {
+      const raw = localStorage.getItem('odyssee:v1');
+      if (raw) this.setState({ prog: JSON.parse(raw) });
+    } catch (e) {}
+    this._keys = e => {
+      if (!this.state.sel) return;
+      if (e.key === 'Escape') this.setState({ sel: null });
+      else if (e.key === 'ArrowRight') this.hop(1);
+      else if (e.key === 'ArrowLeft') this.hop(-1);
+    };
+    window.addEventListener('keydown', this._keys);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._keys); }
+
+  save(next) {
+    this.setState({ prog: next });
+    try { localStorage.setItem('odyssee:v1', JSON.stringify(next)); } catch (e) {}
+  }
+  entry(uid) { return this.state.prog[uid] || {}; }
+  patch(uid, obj) {
+    const next = Object.assign({}, this.state.prog);
+    next[uid] = Object.assign({}, next[uid], obj);
+    this.save(next);
+  }
+
+  cd() { return this.state.data ? this.state.data.consoles[this.state.ck] : null; }
+  hours(h) { const m = /(\d+)/.exec(h || ''); return m ? parseInt(m[1], 10) : 0; }
+  hltbLabel(h) { return '⏳ ~' + this.hours(h) + ' h'; }
+  hltbStyle() {
+    return {
+      fontSize: '11px', letterSpacing: '.02em', padding: '3px 10px', borderRadius: '6px',
+      whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums',
+      border: '1px solid var(--color-divider)',
+      color: 'color-mix(in srgb, var(--color-text) 60%, transparent)'
+    };
+  }
+  pad(n) { return (n < 10 ? '0' : '') + n; }
+
+  fmtDate(iso) {
+    const p = iso.split('-');
+    const mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+    return parseInt(p[2], 10) + ' ' + mois[parseInt(p[1], 10) - 1] + ' ' + p[0];
+  }
+
+  score(s, type) {
+    const base = { fontSize: '11px', letterSpacing: '.02em', padding: '3px 10px', borderRadius: '6px', whiteSpace: 'nowrap' };
+    if (s == null) return { text: '★ —', style: Object.assign({}, base, { color: 'color-mix(in srgb, #e0b357 45%, transparent)', border: '1px solid var(--color-divider)' }) };
+    const t = Math.max(0, Math.min(1, (s - 70) / 25));
+    return {
+      text: '★ ' + s,
+      style: Object.assign({}, base, {
+        fontFamily: 'var(--font-heading)', fontWeight: 500, fontVariantNumeric: 'tabular-nums',
+        color: '#f0d089',
+        background: 'color-mix(in srgb, #e0b357 ' + Math.round(8 + t * 30) + '%, var(--color-neutral-900))',
+        border: '1px solid color-mix(in srgb, #e0b357 ' + Math.round(18 + t * 52) + '%, transparent)'
+      })
+    };
+  }
+
+  hop(dir) {
+    const list = this.visible();
+    const i = list.findIndex(g => g.slug === this.state.sel);
+    if (i < 0) return;
+    this.setState({ sel: list[(i + dir + list.length) % list.length].slug });
+  }
+
+  visible() {
+    const cd = this.cd();
+    if (!cd) return [];
+    const q = this.state.q.trim().toLowerCase();
+    let list = cd.games.map((g, i) => Object.assign({}, g, { _i: i }));
+    if (q) list = list.filter(g => g.title.toLowerCase().indexOf(q) >= 0);
+    if (this.state.filter !== 'tous') list = list.filter(g => (this.entry(this.state.ck + ':' + g.slug).status || 'todo') === this.state.filter);
+    return list;
+  }
+
+  segStyle(active) {
+    return {
+      appearance: 'none', border: 0, cursor: 'pointer', fontFamily: 'var(--font-heading)',
+      fontWeight: 500, fontSize: '12.5px', padding: '7px 13px', whiteSpace: 'nowrap',
+      background: active ? 'var(--color-accent-800)' : 'transparent',
+      color: active ? 'var(--color-accent-100)' : 'color-mix(in srgb, var(--color-text) 60%, transparent)'
+    };
+  }
+
+  renderVals() {
+    const S = this.state, d = S.data, cd = this.cd();
+    const games = cd ? cd.games : [];
+    const dense = (this.props.density ?? 'confort') === 'compact';
+    const showBlurbs = this.props.showBlurbs ?? true;
+    const showScores = this.props.showScores ?? true;
+    const muted = 'color-mix(in srgb, var(--color-text) 45%, transparent)';
+
+    const consoles = d ? Object.values(d.consoles).map(c => {
+      const active = c.key === S.ck;
+      const done = c.games.filter(g => this.entry(c.key + ':' + g.slug).status === 'done').length;
+      return {
+        short: c.short, name: c.name,
+        meta: c.ready ? done + '/' + c.games.length : '—',
+        onPick: () => this.setState({ ck: c.key, sel: null, q: '', filter: 'tous' }),
+        style: {
+          display: 'flex', alignItems: 'center', gap: '8.4px', cursor: 'pointer',
+          borderRadius: '8px', padding: '5px 13px 5px 6px', fontSize: '13px',
+          fontFamily: 'var(--font-heading)', fontWeight: 500,
+          background: active ? 'var(--color-accent-900)' : 'transparent',
+          border: '1px solid ' + (active ? 'var(--color-accent)' : 'var(--color-divider)'),
+          color: active ? 'var(--color-text)' : 'color-mix(in srgb, var(--color-text) 58%, transparent)',
+          opacity: c.ready ? 1 : .5
+        },
+        badgeStyle: {
+          width: '26px', height: '26px', borderRadius: '6px', display: 'flex',
+          alignItems: 'center', justifyContent: 'center', fontSize: '9.5px', fontWeight: 600,
+          background: active ? 'var(--color-accent-700)' : 'var(--color-neutral-800)',
+          color: active ? 'var(--color-accent-100)' : 'color-mix(in srgb, var(--color-text) 60%, transparent)'
+        },
+        metaStyle: { fontSize: '10.5px', letterSpacing: '.04em', color: muted }
+      };
+    }) : [];
+
+    const doneList = games.filter(g => this.entry(S.ck + ':' + g.slug).status === 'done');
+    const rated = games.map(g => this.entry(S.ck + ':' + g.slug).rating).filter(r => r);
+    const pct = games.length ? Math.round(doneList.length / games.length * 100) : 0;
+    const hoursDone = doneList.reduce((s, g) => s + this.hours(g.hltb), 0);
+    const hoursAll = games.reduce((s, g) => s + this.hours(g.hltb), 0);
+    const avg = rated.length ? (rated.reduce((a, b) => a + b, 0) / rated.length).toFixed(1) : null;
+    const playing = games.filter(g => this.entry(S.ck + ':' + g.slug).status === 'playing');
+    const dropped = games.filter(g => this.entry(S.ck + ':' + g.slug).status === 'dropped').length;
+
+    const tags = [];
+    if (games.length) {
+      tags.push(doneList.length + ' / ' + games.length + ' terminés');
+      tags.push(hoursDone + ' h parcourues sur ~' + hoursAll + ' h');
+      if (avg) tags.push('ma moyenne ' + avg + '/10');
+      if (dropped) tags.push(dropped + ' abandonné' + (dropped > 1 ? 's' : ''));
+    }
+
+    const header = cd ? {
+      title: cd.name,
+      sub: cd.ready
+        ? cd.games.length + ' jeux, dans l\'ordre où ils sont sortis. Chaque étape se lit, se note et se commente : l\'odyssée avance de gauche à droite dans le temps.'
+        : 'Console pas encore renseignée. Les titres viendront s\'ajouter ici, dans le même ordre chronologique.'
+    } : { title: '', sub: '' };
+
+    const filters = [{ id: 'tous', label: 'Tout' }].concat(this.statusDefs)
+      .map(f => ({ label: f.label, onPick: () => this.setState({ filter: f.id, sel: null }), style: this.segStyle(S.filter === f.id) }));
+
+    const list = this.visible();
+    const groups = [];
+    list.forEach(g => {
+      const y = g.date.slice(0, 4);
+      let grp = groups[groups.length - 1];
+      if (!grp || grp.label !== y) { grp = { label: y, items: [] }; groups.push(grp); }
+      grp.items.push(this.item(g, dense, showBlurbs, showScores));
+    });
+    groups.forEach(g => { g.sub = g.items.length + (g.items.length > 1 ? ' étapes' : ' étape'); });
+
+    const heroGame = playing[0] || null;
+    const hero = heroGame ? {
+      slotId: 'cover-' + S.ck + '-' + heroGame.slug,
+      title: heroGame.title,
+      line: cd.name + ' · sorti le ' + this.fmtDate(heroGame.date) + ' · ' + this.hltbLabel(heroGame.hltb),
+      blurb: heroGame.blurb,
+      onOpen: () => this.setState({ sel: heroGame.slug })
+    } : null;
+
+    return {
+      consoles, header, filters, groups, hero, heroEmpty: !heroGame,
+      q: S.q,
+      onSearch: e => this.setState({ q: e.target.value }),
+      stats: { pct: pct + ' %', tags: tags },
+      barStyle: { height: '100%', width: pct + '%', background: 'var(--color-accent)', transition: 'width .3s ease' },
+      empty: list.length === 0,
+      emptyMsg: games.length === 0 ? 'Rien à afficher pour cette console — les jeux arrivent.' : 'Aucun jeu ne correspond à ce filtre.',
+      sel: this.selected(),
+      onClose: () => this.setState({ sel: null }),
+      onExport: () => {
+        const blob = new Blob([JSON.stringify(this.state.prog, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'odyssee-progression.json';
+        a.click();
+      },
+      onImport: e => {
+        const f = e.target.files && e.target.files[0];
+        if (!f) return;
+        const r = new FileReader();
+        r.onload = () => { try { this.save(JSON.parse(r.result)); } catch (err) {} };
+        r.readAsText(f);
+      }
+    };
+  }
+
+  item(g, dense, showBlurbs, showScores) {
+    const uid = this.state.ck + ':' + g.slug;
+    const e = this.entry(uid);
+    const status = e.status || 'todo';
+    const sp = this.score(g.score, g.scoreType);
+    const muted = 'color-mix(in srgb, var(--color-text) 45%, transparent)';
+    const statusStyles = {
+      todo: { display: 'none' },
+      playing: { fontSize: '11px', padding: '3px 10px', borderRadius: '6px', border: '1px solid var(--color-accent)', color: 'var(--color-accent-300)' },
+      done: { fontSize: '11px', padding: '3px 10px', borderRadius: '6px', background: 'var(--color-accent-700)', color: 'var(--color-accent-100)' },
+      dropped: { fontSize: '11px', padding: '3px 10px', borderRadius: '6px', border: '1px solid var(--color-divider)', color: muted }
+    };
+    return {
+      step: this.pad(g._i + 1),
+      title: g.title,
+      dateLabel: this.fmtDate(g.date),
+      hltb: this.hltbLabel(g.hltb),
+      hltbStyle: this.hltbStyle(),
+      blurb: g.blurb,
+      scoreText: sp.text,
+      scoreStyle: showScores ? sp.style : { display: 'none' },
+      statusLabel: this.statusDefs.find(s => s.id === status).label,
+      statusStyle: statusStyles[status],
+      myLabel: e.rating ? 'ma note ' + e.rating + '/10' : '',
+      myStyle: e.rating ? { fontSize: '11px', color: 'var(--color-accent-300)', letterSpacing: '.02em' } : { display: 'none' },
+      onOpen: () => this.setState({ sel: g.slug }),
+      rowStyle: {
+        display: 'flex', gap: '11.2px', alignItems: 'flex-start', cursor: 'pointer',
+        padding: dense ? '8.4px 11.2px 8.4px 0' : '14px 11.2px 14px 0',
+        borderRadius: '8px', position: 'relative',
+        opacity: status === 'dropped' ? .55 : 1
+      },
+      markStyle: {
+        flex: 'none', width: '2px', alignSelf: 'stretch', borderRadius: '2px',
+        background: status === 'playing' ? 'var(--color-accent)' : status === 'done' ? 'var(--color-accent-700)' : 'var(--color-neutral-800)'
+      },
+      titleStyle: {
+        fontFamily: 'var(--font-heading)', fontWeight: 500, fontSize: '15.5px', lineHeight: 1.25,
+        letterSpacing: '-.01em',
+        color: status === 'done' ? 'color-mix(in srgb, var(--color-text) 70%, transparent)' : 'var(--color-text)'
+      },
+      blurbStyle: showBlurbs
+        ? { fontSize: '12.5px', lineHeight: 1.5, color: 'color-mix(in srgb, var(--color-text) 48%, transparent)', maxWidth: '62ch', textWrap: 'pretty' }
+        : { display: 'none' }
+    };
+  }
+
+  selected() {
+    const cd = this.cd();
+    if (!cd || !this.state.sel) return null;
+    const g = cd.games.find(x => x.slug === this.state.sel);
+    if (!g) return null;
+    const i = cd.games.indexOf(g);
+    const uid = this.state.ck + ':' + g.slug;
+    const e = this.entry(uid);
+    const sp = this.score(g.score, g.scoreType);
+    const btn = active => ({
+      appearance: 'none', cursor: 'pointer', fontFamily: 'var(--font-heading)', fontWeight: 500,
+      fontSize: '12.5px', padding: '7px 13px', borderRadius: '8px',
+      background: active ? 'var(--color-accent-800)' : 'transparent',
+      border: '1px solid ' + (active ? 'var(--color-accent)' : 'var(--color-divider)'),
+      color: active ? 'var(--color-accent-100)' : 'color-mix(in srgb, var(--color-text) 60%, transparent)'
+    });
+    return {
+      step: 'étape ' + this.pad(i + 1) + ' / ' + cd.games.length,
+      consoleName: cd.name,
+      slotId: 'cover-' + this.state.ck + '-' + g.slug,
+      title: g.title,
+      dateLabel: 'Sorti le ' + this.fmtDate(g.date),
+      hltb: this.hltbLabel(g.hltb) + ' pour le finir',
+      blurb: g.blurb,
+      scoreText: sp.text,
+      scoreStyle: sp.style,
+      statuses: this.statusDefs.map(s => ({
+        label: s.label,
+        onPick: () => this.patch(uid, { status: (e.status || 'todo') === s.id ? 'todo' : s.id }),
+        style: btn((e.status || 'todo') === s.id)
+      })),
+      ratings: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => ({
+        n: n,
+        onPick: () => this.patch(uid, { rating: e.rating === n ? null : n }),
+        style: Object.assign(btn(e.rating === n), { width: '32px', padding: '7px 0', textAlign: 'center' })
+      })),
+      finishedOn: e.finishedOn || '',
+      onDate: ev => this.patch(uid, { finishedOn: ev.target.value }),
+      note: e.note || '',
+      onNote: ev => this.patch(uid, { note: ev.target.value }),
+      onPrev: () => this.hop(-1),
+      onNext: () => this.hop(1)
+    };
+  }
+}
+</script>
+</body>
+</html>
