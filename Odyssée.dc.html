@@ -417,7 +417,7 @@ class Component extends DCLogic {
       sub: !cd.ready
         ? 'Console pas encore renseignée. Les titres viendront s\'ajouter ici, dans le même ordre chronologique.'
         : saga
-          ? saga.games.length + ' jeux à faire dans cet ordre. ' + (saga.note || '')
+          ? saga.games.length + ' jeux, du plus ancien au plus récent. ' + (saga.note || '')
           : games.length + ' jeux, dans l\'ordre où ils sont sortis. Chaque étape se lit, se note et se commente : l\'odyssée avance de gauche à droite dans le temps.'
     } : { title: '', sub: '' };
 

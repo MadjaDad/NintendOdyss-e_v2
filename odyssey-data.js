@@ -431,11 +431,11 @@ const DATA = {
       ]
     },
 
-    /* Onglet "Sagas" : au lieu d'une liste plate, des séries. Chacune se lit
-       dans l'ordre conseillé pour la découvrir (souvent la sortie, parfois un
-       épisode plus accessible en porte d'entrée). Les sagas sont présentées de
-       la moyenne critique la plus basse à la plus haute, et chaque jeu porte
-       la plateforme sur laquelle le faire. */
+    /* Onglet "Sagas" : au lieu d'une liste plate, des séries. Les jeux d'une
+       saga sont triés par date de sortie ; "note" indique par quel épisode
+       commencer quand ce n'est pas le plus ancien. Les sagas sont présentées
+       de la moyenne critique la plus basse à la plus haute, et chaque jeu
+       porte la plateforme sur laquelle le faire. */
     sagas: {
       key: "sagas",
       name: "Sagas",
@@ -450,12 +450,12 @@ const DATA = {
           name: "Star Ocean",
           note: "Le remake du deuxième épisode est de loin la meilleure porte d'entrée ; les épisodes sont indépendants, on peut donc piocher librement ensuite.",
           games: [
-            {slug:"so-second-story-r", title:"Star Ocean: The Second Story R", plat:"PS5", date:"2023-11-02", score:87, scoreType:"critic", hltb:"40h", blurb:"Remake somptueux du deuxième épisode, deux héros et deux récits croisés."},
             {slug:"so-till-the-end-of-time", title:"Star Ocean: Till the End of Time", plat:"PS2", date:"2004-08-31", score:80, scoreType:"critic", hltb:"40h", blurb:"Science-fantasy aux combats en temps réel, avec un twist resté fameux."},
-            {slug:"so-divine-force", title:"Star Ocean: The Divine Force", plat:"PS5", date:"2022-10-27", score:74, scoreType:"critic", hltb:"40h", blurb:"Retour aux sources spatial avec exploration aérienne et double protagoniste."},
-            {slug:"so-first-departure-r", title:"Star Ocean: First Departure R", plat:"PS4", date:"2019-12-05", score:72, scoreType:"critic", hltb:"25h", blurb:"Le tout premier épisode remis au goût du jour, court et fondateur."},
             {slug:"so-last-hope", title:"Star Ocean: The Last Hope", plat:"X360", date:"2009-02-24", score:72, scoreType:"critic", hltb:"50h", blurb:"Préquelle spatiale généreuse, système de combat rapide et technique."},
-            {slug:"so-integrity", title:"Star Ocean: Integrity and Faithlessness", plat:"PS4", date:"2016-07-12", score:68, scoreType:"critic", hltb:"35h", blurb:"Épisode sans temps de chargement, mal aimé pour son récit en retrait."}
+            {slug:"so-integrity", title:"Star Ocean: Integrity and Faithlessness", plat:"PS4", date:"2016-07-12", score:68, scoreType:"critic", hltb:"35h", blurb:"Épisode sans temps de chargement, mal aimé pour son récit en retrait."},
+            {slug:"so-first-departure-r", title:"Star Ocean: First Departure R", plat:"PS4", date:"2019-12-05", score:72, scoreType:"critic", hltb:"25h", blurb:"Le tout premier épisode remis au goût du jour, court et fondateur."},
+            {slug:"so-divine-force", title:"Star Ocean: The Divine Force", plat:"PS5", date:"2022-10-27", score:74, scoreType:"critic", hltb:"40h", blurb:"Retour aux sources spatial avec exploration aérienne et double protagoniste."},
+            {slug:"so-second-story-r", title:"Star Ocean: The Second Story R", plat:"PS5", date:"2023-11-02", score:87, scoreType:"critic", hltb:"40h", blurb:"Remake somptueux du deuxième épisode, deux héros et deux récits croisés."}
           ]
         },
         {
@@ -476,10 +476,10 @@ const DATA = {
           games: [
             {slug:"klonoa-door-phantomile", title:"Klonoa: Door to Phantomile", plat:"PS1", date:"1998-03-31", score:87, scoreType:"critic", hltb:"6h", blurb:"Plateforme 2.5D onirique, une fin restée dans toutes les mémoires."},
             {slug:"klonoa-2-lunatea", title:"Klonoa 2: Lunatea's Veil", plat:"PS2", date:"2001-07-24", score:91, scoreType:"critic", hltb:"8h", blurb:"Suite plus ample et mélancolique, sommet méconnu de la PlayStation 2."},
-            {slug:"klonoa-phantasy-reverie", title:"Klonoa Phantasy Reverie Series", plat:"Switch", date:"2022-07-08", score:76, scoreType:"critic", hltb:"12h", blurb:"Les deux épisodes principaux remis à neuf dans une seule compilation."},
             {slug:"klonoa-empire-dreams", title:"Klonoa: Empire of Dreams", plat:"GBA", date:"2001-11-14", score:79, scoreType:"critic", hltb:"5h", blurb:"Premier épisode portable, plus porté sur le puzzle que la plateforme."},
+            {slug:"klonoa-heroes", title:"Klonoa Heroes", plat:"GBA", date:"2002-12-13", score:null, scoreType:"none", hltb:"15h", blurb:"Action-RPG resté au Japon, trois héros et vue de dessus."},
             {slug:"klonoa-dream-champ", title:"Klonoa: Dream Champ Tournament", plat:"GBA", date:"2005-11-08", score:74, scoreType:"critic", hltb:"6h", blurb:"Klonoa rappelé au pays des rêves pour un tournoi, plus exigeant."},
-            {slug:"klonoa-heroes", title:"Klonoa Heroes", plat:"GBA", date:"2002-12-13", score:null, scoreType:"none", hltb:"15h", blurb:"Action-RPG resté au Japon, trois héros et vue de dessus."}
+            {slug:"klonoa-phantasy-reverie", title:"Klonoa Phantasy Reverie Series", plat:"Switch", date:"2022-07-08", score:76, scoreType:"critic", hltb:"12h", blurb:"Les deux épisodes principaux remis à neuf dans une seule compilation."}
           ]
         },
         {
@@ -497,14 +497,14 @@ const DATA = {
           name: "Etrian Odyssey",
           note: "Les Untold ajoutent un mode histoire qui adoucit l'entrée dans la série ; les épisodes numérotés sont indépendants, Nexus fait office de best-of final.",
           games: [
-            {slug:"eo-untold-1", title:"Etrian Odyssey Untold: The Millennium Girl", plat:"3DS", date:"2013-10-01", score:80, scoreType:"critic", hltb:"40h", blurb:"Le premier labyrinthe refait avec un mode histoire scénarisé."},
-            {slug:"eo-untold-2", title:"Etrian Odyssey 2 Untold: The Fafnir Knight", plat:"3DS", date:"2015-08-04", score:80, scoreType:"critic", hltb:"40h", blurb:"Le deuxième labyrinthe refait, version définitive de l'épisode."},
-            {slug:"eo-origins", title:"Etrian Odyssey Origins Collection", plat:"Switch", date:"2023-06-01", score:80, scoreType:"critic", hltb:"120h", blurb:"Les trois premiers épisodes DS restaurés en haute définition."},
             {slug:"eo-3", title:"Etrian Odyssey III: The Drowned City", plat:"DS", date:"2010-09-21", score:79, scoreType:"critic", hltb:"60h", blurb:"Labyrinthe englouti et navigation maritime, souvent cité comme le meilleur."},
             {slug:"eo-4", title:"Etrian Odyssey IV: Legends of the Titan", plat:"3DS", date:"2013-02-26", score:82, scoreType:"critic", hltb:"40h", blurb:"Le plus accessible de la série, exploration en dirigeable."},
+            {slug:"eo-untold-1", title:"Etrian Odyssey Untold: The Millennium Girl", plat:"3DS", date:"2013-10-01", score:80, scoreType:"critic", hltb:"40h", blurb:"Le premier labyrinthe refait avec un mode histoire scénarisé."},
+            {slug:"eo-mystery-dungeon", title:"Etrian Mystery Dungeon", plat:"3DS", date:"2015-04-07", score:74, scoreType:"critic", hltb:"40h", blurb:"Les labyrinthes d'Etrian croisés au roguelike de Shiren."},
+            {slug:"eo-untold-2", title:"Etrian Odyssey 2 Untold: The Fafnir Knight", plat:"3DS", date:"2015-08-04", score:80, scoreType:"critic", hltb:"40h", blurb:"Le deuxième labyrinthe refait, version définitive de l'épisode."},
             {slug:"eo-5", title:"Etrian Odyssey V: Beyond the Myth", plat:"3DS", date:"2017-10-17", score:79, scoreType:"critic", hltb:"60h", blurb:"Retour à l'épure, personnalisation des classes très poussée."},
             {slug:"eo-nexus", title:"Etrian Odyssey Nexus", plat:"3DS", date:"2019-02-05", score:81, scoreType:"critic", hltb:"60h", blurb:"Le grand best-of des labyrinthes, adieu de la série à la 3DS."},
-            {slug:"eo-mystery-dungeon", title:"Etrian Mystery Dungeon", plat:"3DS", date:"2015-04-07", score:74, scoreType:"critic", hltb:"40h", blurb:"Les labyrinthes d'Etrian croisés au roguelike de Shiren."}
+            {slug:"eo-origins", title:"Etrian Odyssey Origins Collection", plat:"Switch", date:"2023-06-01", score:80, scoreType:"critic", hltb:"120h", blurb:"Les trois premiers épisodes DS restaurés en haute définition."}
           ]
         },
         {
@@ -512,14 +512,14 @@ const DATA = {
           name: "Suikoden",
           note: "Le remaster des deux premiers est la porte d'entrée évidente ; le II est considéré comme l'un des plus grands JRPG jamais écrits. Le IV est le maillon faible.",
           games: [
-            {slug:"suiko-hd-remaster", title:"Suikoden I & II HD Remaster", plat:"Switch", date:"2025-03-06", score:85, scoreType:"critic", hltb:"50h", blurb:"Les deux fondateurs restaurés, la meilleure façon de commencer aujourd'hui."},
             {slug:"suiko-1", title:"Suikoden", plat:"PS1", date:"1996-12-15", score:80, scoreType:"user", hltb:"20h", blurb:"Premier recrutement des 108 étoiles du destin, court et dense."},
             {slug:"suiko-2", title:"Suikoden II", plat:"PS1", date:"1999-08-31", score:92, scoreType:"user", hltb:"35h", blurb:"Guerre, amitié trahie et Luca Blight : sommet absolu du JRPG PS1."},
             {slug:"suiko-3", title:"Suikoden III", plat:"PS2", date:"2002-10-24", score:81, scoreType:"critic", hltb:"35h", blurb:"Trois points de vue croisés sur une même guerre."},
             {slug:"suiko-4", title:"Suikoden IV", plat:"PS2", date:"2005-01-11", score:66, scoreType:"critic", hltb:"35h", blurb:"Épisode maritime mal aimé, à réserver aux complétistes."},
             {slug:"suiko-tactics", title:"Suikoden Tactics", plat:"PS2", date:"2005-11-08", score:73, scoreType:"critic", hltb:"40h", blurb:"Spin-off tactique qui prolonge et rattrape le quatrième épisode."},
             {slug:"suiko-5", title:"Suikoden V", plat:"PS2", date:"2006-03-21", score:78, scoreType:"critic", hltb:"45h", blurb:"Retour aux sources politiques, le meilleur depuis le II."},
-            {slug:"suiko-tierkreis", title:"Suikoden Tierkreis", plat:"DS", date:"2009-03-17", score:78, scoreType:"critic", hltb:"30h", blurb:"Les 108 étoiles en poche, dans un multivers indépendant."}
+            {slug:"suiko-tierkreis", title:"Suikoden Tierkreis", plat:"DS", date:"2009-03-17", score:78, scoreType:"critic", hltb:"30h", blurb:"Les 108 étoiles en poche, dans un multivers indépendant."},
+            {slug:"suiko-hd-remaster", title:"Suikoden I & II HD Remaster", plat:"Switch", date:"2025-03-06", score:85, scoreType:"critic", hltb:"50h", blurb:"Les deux fondateurs restaurés, la meilleure façon de commencer aujourd'hui."}
           ]
         },
         {
@@ -532,8 +532,8 @@ const DATA = {
             {slug:"disgaea-3", title:"Disgaea 3: Absence of Justice", plat:"PS3", date:"2008-08-26", score:79, scoreType:"critic", hltb:"45h", blurb:"L'académie des démons où sécher les cours est une vertu."},
             {slug:"disgaea-4", title:"Disgaea 4: A Promise Unforgotten", plat:"PS3", date:"2011-09-06", score:80, scoreType:"critic", hltb:"45h", blurb:"Sardines, révolution et grinding infini, premier épisode en HD."},
             {slug:"disgaea-5", title:"Disgaea 5: Alliance of Vengeance", plat:"Switch", date:"2015-10-06", score:82, scoreType:"critic", hltb:"60h", blurb:"L'épisode le plus généreux et le plus lisible de la série."},
-            {slug:"disgaea-7", title:"Disgaea 7: Vows of the Virtueless", plat:"Switch", date:"2023-10-03", score:76, scoreType:"critic", hltb:"50h", blurb:"Netherworld d'inspiration japonaise, retour en forme après le 6."},
-            {slug:"disgaea-6", title:"Disgaea 6: Defiance of Destiny", plat:"Switch", date:"2021-06-29", score:70, scoreType:"critic", hltb:"40h", blurb:"Passage à la 3D et automatisation du grind, épisode clivant."}
+            {slug:"disgaea-6", title:"Disgaea 6: Defiance of Destiny", plat:"Switch", date:"2021-06-29", score:70, scoreType:"critic", hltb:"40h", blurb:"Passage à la 3D et automatisation du grind, épisode clivant."},
+            {slug:"disgaea-7", title:"Disgaea 7: Vows of the Virtueless", plat:"Switch", date:"2023-10-03", score:76, scoreType:"critic", hltb:"50h", blurb:"Netherworld d'inspiration japonaise, retour en forme après le 6."}
           ]
         },
         {
@@ -541,18 +541,18 @@ const DATA = {
           name: "Sonic",
           note: "Commencer par Mania, qui condense tout ce que la série a de meilleur en 2D, puis remonter aux classiques Mega Drive avant d'aborder la 3D.",
           games: [
-            {slug:"sonic-mania-s", title:"Sonic Mania", plat:"Switch", date:"2017-08-15", score:86, scoreType:"critic", hltb:"6h", blurb:"La 2D Mega Drive ressuscitée par des fans devenus développeurs."},
-            {slug:"sonic-3-knuckles-s", title:"Sonic 3 & Knuckles", plat:"MD", date:"1994-10-18", score:90, scoreType:"user", hltb:"8h", blurb:"Sommet de l'ère 16 bits, deux cartouches à emboîter pour l'aventure complète."},
             {slug:"sonic-2-s", title:"Sonic the Hedgehog 2", plat:"MD", date:"1992-11-21", score:87, scoreType:"user", hltb:"5h", blurb:"La vitesse trouve son rythme, et Tails rejoint l'aventure."},
             {slug:"sonic-cd-s", title:"Sonic CD", plat:"MD", date:"1993-11-19", score:84, scoreType:"critic", hltb:"5h", blurb:"Voyage temporel dans chaque niveau, la bande-son la plus culte."},
-            {slug:"sonic-adventure-2-s", title:"Sonic Adventure 2", plat:"DC", date:"2001-06-19", score:87, scoreType:"user", hltb:"11h", blurb:"Sommet de l'ère Dreamcast, Chao Garden et double campagne."},
+            {slug:"sonic-3-knuckles-s", title:"Sonic 3 & Knuckles", plat:"MD", date:"1994-10-18", score:90, scoreType:"user", hltb:"8h", blurb:"Sommet de l'ère 16 bits, deux cartouches à emboîter pour l'aventure complète."},
             {slug:"sonic-adventure-s", title:"Sonic Adventure", plat:"DC", date:"1999-09-09", score:86, scoreType:"critic", hltb:"12h", blurb:"Le passage à la 3D, ambitieux et daté mais historiquement majeur."},
-            {slug:"sonic-rush-s", title:"Sonic Rush", plat:"DS", date:"2005-11-15", score:82, scoreType:"critic", hltb:"4h", blurb:"Vitesse pure sur deux écrans, avec Blaze et la jauge de boost."},
+            {slug:"sonic-adventure-2-s", title:"Sonic Adventure 2", plat:"DC", date:"2001-06-19", score:87, scoreType:"user", hltb:"11h", blurb:"Sommet de l'ère Dreamcast, Chao Garden et double campagne."},
             {slug:"sonic-advance-s", title:"Sonic Advance", plat:"GBA", date:"2002-02-19", score:79, scoreType:"critic", hltb:"4h", blurb:"Le retour du hérisson en 2D par Dimps, level design réussi."},
+            {slug:"sonic-rush-s", title:"Sonic Rush", plat:"DS", date:"2005-11-15", score:82, scoreType:"critic", hltb:"4h", blurb:"Vitesse pure sur deux écrans, avec Blaze et la jauge de boost."},
             {slug:"sonic-colors-s", title:"Sonic Colors", plat:"Wii", date:"2010-11-16", score:78, scoreType:"critic", hltb:"8h", blurb:"Wisps colorés et parc d'attractions spatial, l'un des 3D les plus aimés."},
             {slug:"sonic-generations-s", title:"Sonic Generations", plat:"PS3", date:"2011-11-01", score:77, scoreType:"critic", hltb:"8h", blurb:"Vingt ans de Sonic revisités, chaque niveau en versions 2D et 3D."},
-            {slug:"sonic-superstars-s", title:"Sonic Superstars", plat:"Switch", date:"2023-10-17", score:73, scoreType:"critic", hltb:"8h", blurb:"Retour à la 2D en jouant sur les pouvoirs des Émeraudes."},
-            {slug:"sonic-frontiers-s", title:"Sonic Frontiers", plat:"PS5", date:"2022-11-08", score:71, scoreType:"critic", hltb:"25h", blurb:"Premier Sonic en monde ouvert, imparfait mais attachant."}
+            {slug:"sonic-mania-s", title:"Sonic Mania", plat:"Switch", date:"2017-08-15", score:86, scoreType:"critic", hltb:"6h", blurb:"La 2D Mega Drive ressuscitée par des fans devenus développeurs."},
+            {slug:"sonic-frontiers-s", title:"Sonic Frontiers", plat:"PS5", date:"2022-11-08", score:71, scoreType:"critic", hltb:"25h", blurb:"Premier Sonic en monde ouvert, imparfait mais attachant."},
+            {slug:"sonic-superstars-s", title:"Sonic Superstars", plat:"Switch", date:"2023-10-17", score:73, scoreType:"critic", hltb:"8h", blurb:"Retour à la 2D en jouant sur les pouvoirs des Émeraudes."}
           ]
         },
         {
@@ -560,16 +560,16 @@ const DATA = {
           name: "Tales of",
           note: "Chaque épisode est autonome. Symphonia et Arise sont les deux meilleures portes d'entrée selon que l'on préfère le charme d'époque ou le confort moderne.",
           games: [
+            {slug:"tales-destiny-s", title:"Tales of Destiny", plat:"PS1", date:"1998-09-30", score:76, scoreType:"critic", hltb:"35h", blurb:"L'épisode qui a installé la série en Occident, épées douées de parole."},
             {slug:"tales-symphonia-s", title:"Tales of Symphonia", plat:"GC", date:"2004-07-13", score:89, scoreType:"user", hltb:"45h", blurb:"Le plus aimé de la série, récit généreux et compagnons marquants."},
-            {slug:"tales-arise-s", title:"Tales of Arise", plat:"PS5", date:"2021-09-10", score:87, scoreType:"critic", hltb:"45h", blurb:"Renaissance moderne de la saga, combats spectaculaires et lisibles."},
-            {slug:"tales-vesperia-s", title:"Tales of Vesperia: Definitive Edition", plat:"Switch", date:"2019-01-11", score:82, scoreType:"critic", hltb:"45h", blurb:"Yuri, justicier hors-la-loi, le héros le plus adulte de la série."},
+            {slug:"tales-phantasia-s", title:"Tales of Phantasia", plat:"GBA", date:"2006-03-07", score:73, scoreType:"critic", hltb:"30h", blurb:"Le tout premier Tales, voyage temporel et combats en ligne."},
             {slug:"tales-abyss-s", title:"Tales of the Abyss", plat:"PS2", date:"2006-10-10", score:78, scoreType:"critic", hltb:"45h", blurb:"Luke apprend à exister au-delà de sa réplique, récit dense."},
+            {slug:"tales-graces-s", title:"Tales of Graces f", plat:"PS3", date:"2012-03-13", score:77, scoreType:"critic", hltb:"40h", blurb:"Le système de combat le plus affûté de toute la série."},
             {slug:"tales-xillia-s", title:"Tales of Xillia", plat:"PS3", date:"2013-08-06", score:78, scoreType:"critic", hltb:"40h", blurb:"Deux héros au choix pour l'épisode anniversaire des Tales."},
             {slug:"tales-xillia-2-s", title:"Tales of Xillia 2", plat:"PS3", date:"2014-08-19", score:78, scoreType:"critic", hltb:"45h", blurb:"Suite directe plus sombre, choix moraux et dettes à rembourser."},
             {slug:"tales-berseria-s", title:"Tales of Berseria", plat:"PS4", date:"2017-01-24", score:77, scoreType:"critic", hltb:"45h", blurb:"Velvet, héroïne mue par la vengeance, la plus sombre de la saga."},
-            {slug:"tales-graces-s", title:"Tales of Graces f", plat:"PS3", date:"2012-03-13", score:77, scoreType:"critic", hltb:"40h", blurb:"Le système de combat le plus affûté de toute la série."},
-            {slug:"tales-destiny-s", title:"Tales of Destiny", plat:"PS1", date:"1998-09-30", score:76, scoreType:"critic", hltb:"35h", blurb:"L'épisode qui a installé la série en Occident, épées douées de parole."},
-            {slug:"tales-phantasia-s", title:"Tales of Phantasia", plat:"GBA", date:"2006-03-07", score:73, scoreType:"critic", hltb:"30h", blurb:"Le tout premier Tales, voyage temporel et combats en ligne."}
+            {slug:"tales-vesperia-s", title:"Tales of Vesperia: Definitive Edition", plat:"Switch", date:"2019-01-11", score:82, scoreType:"critic", hltb:"45h", blurb:"Yuri, justicier hors-la-loi, le héros le plus adulte de la série."},
+            {slug:"tales-arise-s", title:"Tales of Arise", plat:"PS5", date:"2021-09-10", score:87, scoreType:"critic", hltb:"45h", blurb:"Renaissance moderne de la saga, combats spectaculaires et lisibles."}
           ]
         },
         {
@@ -606,27 +606,27 @@ const DATA = {
           name: "Ace Attorney",
           note: "La trilogie originale d'abord, elle se conclut magistralement. Investigations suit Edgeworth, et Great Ace Attorney est une préquelle victorienne indépendante.",
           games: [
+            {slug:"aa-layton-vs-s", title:"Professeur Layton vs. Phoenix Wright", plat:"3DS", date:"2014-08-29", score:78, scoreType:"critic", hltb:"25h", blurb:"Crossover en terre de sorcellerie, procès et énigmes mêlés."},
             {slug:"aa-trilogy-s", title:"Phoenix Wright: Ace Attorney Trilogy", plat:"Switch", date:"2019-04-09", score:87, scoreType:"critic", hltb:"45h", blurb:"Les trois premiers procès réunis, sommet du genre."},
-            {slug:"aa-investigations-s", title:"Ace Attorney Investigations Collection", plat:"Switch", date:"2024-09-06", score:80, scoreType:"critic", hltb:"35h", blurb:"Miles Edgeworth mène l'enquête sur le terrain, deux épisodes réunis."},
-            {slug:"aa-apollo-trilogy-s", title:"Apollo Justice: Ace Attorney Trilogy", plat:"Switch", date:"2024-01-25", score:82, scoreType:"critic", hltb:"50h", blurb:"La seconde génération d'avocats, trois épisodes canoniques."},
             {slug:"aa-great-chronicles-s", title:"The Great Ace Attorney Chronicles", plat:"Switch", date:"2021-07-27", score:87, scoreType:"critic", hltb:"50h", blurb:"Londres victorien, Sholmès en renfort, la meilleure écriture de la série."},
-            {slug:"aa-layton-vs-s", title:"Professeur Layton vs. Phoenix Wright", plat:"3DS", date:"2014-08-29", score:78, scoreType:"critic", hltb:"25h", blurb:"Crossover en terre de sorcellerie, procès et énigmes mêlés."}
+            {slug:"aa-apollo-trilogy-s", title:"Apollo Justice: Ace Attorney Trilogy", plat:"Switch", date:"2024-01-25", score:82, scoreType:"critic", hltb:"50h", blurb:"La seconde génération d'avocats, trois épisodes canoniques."},
+            {slug:"aa-investigations-s", title:"Ace Attorney Investigations Collection", plat:"Switch", date:"2024-09-06", score:80, scoreType:"critic", hltb:"35h", blurb:"Miles Edgeworth mène l'enquête sur le terrain, deux épisodes réunis."}
           ]
         },
         {
           slug: "mega-man",
           name: "Mega Man",
-          note: "Les compilations rassemblent tout l'essentiel : classique d'abord, puis X, puis Zero et enfin Battle Network pour la branche RPG.",
+          note: "Quatre branches distinctes : la série classique, X, Zero et Battle Network. Les compilations en rassemblent l'essentiel, et Mega Man 2 reste la meilleure entrée.",
           games: [
             {slug:"mm-2-s", title:"Mega Man 2", plat:"NES", date:"1988-12-24", score:92, scoreType:"user", hltb:"3h", blurb:"L'épisode qui a fixé la formule, encore la référence quarante ans après."},
             {slug:"mm-x-s", title:"Mega Man X", plat:"SNES", date:"1993-12-17", score:91, scoreType:"user", hltb:"5h", blurb:"Dash, escalade et armure évolutive : la relance parfaite de la série."},
-            {slug:"mm-legacy-1-s", title:"Mega Man Legacy Collection", plat:"Switch", date:"2015-08-25", score:83, scoreType:"critic", hltb:"10h", blurb:"Les six épisodes NES, socle de toute la série."},
-            {slug:"mm-11-s", title:"Mega Man 11", plat:"Switch", date:"2018-10-02", score:80, scoreType:"critic", hltb:"8h", blurb:"Retour moderne réussi, avec le système de double engrenage."},
-            {slug:"mm-x-legacy-s", title:"Mega Man X Legacy Collection", plat:"Switch", date:"2018-07-24", score:78, scoreType:"critic", hltb:"15h", blurb:"La branche X, plus nerveuse et plus sombre, réunie en un disque."},
-            {slug:"mm-zero-collection-s", title:"Mega Man Zero/ZX Legacy Collection", plat:"Switch", date:"2020-02-25", score:80, scoreType:"critic", hltb:"20h", blurb:"Les six épisodes portables exigeants, avec modes d'aide bienvenus."},
             {slug:"mm-zero-2-s", title:"Mega Man Zero 2", plat:"GBA", date:"2003-10-28", score:80, scoreType:"critic", hltb:"5h", blurb:"Sommet de la branche Zero, action affûtée et formes élémentaires."},
-            {slug:"mm-bn-collection-s", title:"Mega Man Battle Network Legacy Collection", plat:"Switch", date:"2023-04-14", score:80, scoreType:"critic", hltb:"60h", blurb:"Les dix RPG tactiques en réseau, avec le troisième en sommet."},
-            {slug:"mm-legacy-2-s", title:"Mega Man Legacy Collection 2", plat:"Switch", date:"2017-08-08", score:73, scoreType:"critic", hltb:"10h", blurb:"Les épisodes 7 à 10, plus inégaux mais nécessaires à la collection."}
+            {slug:"mm-legacy-1-s", title:"Mega Man Legacy Collection", plat:"Switch", date:"2015-08-25", score:83, scoreType:"critic", hltb:"10h", blurb:"Les six épisodes NES, socle de toute la série."},
+            {slug:"mm-legacy-2-s", title:"Mega Man Legacy Collection 2", plat:"Switch", date:"2017-08-08", score:73, scoreType:"critic", hltb:"10h", blurb:"Les épisodes 7 à 10, plus inégaux mais nécessaires à la collection."},
+            {slug:"mm-x-legacy-s", title:"Mega Man X Legacy Collection", plat:"Switch", date:"2018-07-24", score:78, scoreType:"critic", hltb:"15h", blurb:"La branche X, plus nerveuse et plus sombre, réunie en un disque."},
+            {slug:"mm-11-s", title:"Mega Man 11", plat:"Switch", date:"2018-10-02", score:80, scoreType:"critic", hltb:"8h", blurb:"Retour moderne réussi, avec le système de double engrenage."},
+            {slug:"mm-zero-collection-s", title:"Mega Man Zero/ZX Legacy Collection", plat:"Switch", date:"2020-02-25", score:80, scoreType:"critic", hltb:"20h", blurb:"Les six épisodes portables exigeants, avec modes d'aide bienvenus."},
+            {slug:"mm-bn-collection-s", title:"Mega Man Battle Network Legacy Collection", plat:"Switch", date:"2023-04-14", score:80, scoreType:"critic", hltb:"60h", blurb:"Les dix RPG tactiques en réseau, avec le troisième en sommet."}
           ]
         },
         {
@@ -636,8 +636,8 @@ const DATA = {
           games: [
             {slug:"ys-1-2-chronicles", title:"Ys I & II Chronicles+", plat:"PC", date:"2009-04-23", score:85, scoreType:"critic", hltb:"15h", blurb:"Les deux fondateurs restaurés, où Adol commence son périple."},
             {slug:"ys-felghana-s", title:"Ys: The Oath in Felghana", plat:"PSP", date:"2010-03-19", score:85, scoreType:"critic", hltb:"12h", blurb:"Action-RPG d'une nervosité rare, bande-son rock légendaire."},
-            {slug:"ys-origin-s", title:"Ys Origin", plat:"PC", date:"2012-05-31", score:82, scoreType:"critic", hltb:"15h", blurb:"Préquelle dans la Tour de Darm, trois personnages jouables."},
             {slug:"ys-seven-s", title:"Ys Seven", plat:"PSP", date:"2010-08-17", score:80, scoreType:"critic", hltb:"30h", blurb:"Passage au groupe de trois personnages, tournant de la série."},
+            {slug:"ys-origin-s", title:"Ys Origin", plat:"PC", date:"2012-05-31", score:82, scoreType:"critic", hltb:"15h", blurb:"Préquelle dans la Tour de Darm, trois personnages jouables."},
             {slug:"ys-celceta-s", title:"Ys: Memories of Celceta", plat:"Vita", date:"2013-11-26", score:78, scoreType:"critic", hltb:"25h", blurb:"Adol amnésique cartographie la Grande Forêt, épisode très rythmé."},
             {slug:"ys-8-s", title:"Ys VIII: Lacrimosa of Dana", plat:"PS4", date:"2017-09-12", score:85, scoreType:"critic", hltb:"40h", blurb:"Naufrage sur une île mystérieuse, sommet moderne de la série."},
             {slug:"ys-9-s", title:"Ys IX: Monstrum Nox", plat:"PS4", date:"2021-02-02", score:80, scoreType:"critic", hltb:"40h", blurb:"Ville-prison et pouvoirs surnaturels, exploration verticale."},
@@ -649,14 +649,14 @@ const DATA = {
           name: "Kirby",
           note: "Super Star Ultra condense la formule classique, Le Monde Oublié réussit le passage à la 3D. Tous les épisodes sont indépendants.",
           games: [
-            {slug:"kirby-ssu-s", title:"Kirby Super Star Ultra", plat:"DS", date:"2008-09-22", score:89, scoreType:"user", hltb:"8h", blurb:"Compilation de mini-aventures, le Kirby 2D le plus complet."},
-            {slug:"kirby-robobot-s", title:"Kirby: Planet Robobot", plat:"3DS", date:"2016-06-10", score:87, scoreType:"user", hltb:"7h", blurb:"Kirby pilote une armure mécha, sommet de l'ère portable."},
             {slug:"kirby-adventure-s", title:"Kirby's Adventure", plat:"NES", date:"1993-05-01", score:86, scoreType:"user", hltb:"5h", blurb:"Naissance des pouvoirs de copie, classique NES tardif et coloré."},
-            {slug:"kirby-forgotten-land-s", title:"Kirby et le Monde Oublié", plat:"Switch", date:"2022-03-25", score:85, scoreType:"critic", hltb:"12h", blurb:"Premier vrai Kirby en 3D, transformations Bouffe-tout inoubliables."},
-            {slug:"kirby-triple-deluxe-s", title:"Kirby: Triple Deluxe", plat:"3DS", date:"2014-05-02", score:80, scoreType:"critic", hltb:"6h", blurb:"Kirby joue sur la profondeur des deux plans grâce à la 3D."},
-            {slug:"kirby-rtdl-dx-s", title:"Kirby's Return to Dream Land Deluxe", plat:"Switch", date:"2023-02-24", score:79, scoreType:"critic", hltb:"10h", blurb:"Coopération à quatre et retour aux fondamentaux, version enrichie."},
             {slug:"kirby-nightmare-s", title:"Kirby: Nightmare in Dream Land", plat:"GBA", date:"2002-12-16", score:79, scoreType:"critic", hltb:"5h", blurb:"Remake du tout premier Kirby, doux et accessible."},
-            {slug:"kirby-star-allies-s", title:"Kirby Star Allies", plat:"Switch", date:"2018-03-16", score:73, scoreType:"critic", hltb:"10h", blurb:"Coopération à quatre et alliés à recruter, court mais généreux."}
+            {slug:"kirby-ssu-s", title:"Kirby Super Star Ultra", plat:"DS", date:"2008-09-22", score:89, scoreType:"user", hltb:"8h", blurb:"Compilation de mini-aventures, le Kirby 2D le plus complet."},
+            {slug:"kirby-triple-deluxe-s", title:"Kirby: Triple Deluxe", plat:"3DS", date:"2014-05-02", score:80, scoreType:"critic", hltb:"6h", blurb:"Kirby joue sur la profondeur des deux plans grâce à la 3D."},
+            {slug:"kirby-robobot-s", title:"Kirby: Planet Robobot", plat:"3DS", date:"2016-06-10", score:87, scoreType:"user", hltb:"7h", blurb:"Kirby pilote une armure mécha, sommet de l'ère portable."},
+            {slug:"kirby-star-allies-s", title:"Kirby Star Allies", plat:"Switch", date:"2018-03-16", score:73, scoreType:"critic", hltb:"10h", blurb:"Coopération à quatre et alliés à recruter, court mais généreux."},
+            {slug:"kirby-forgotten-land-s", title:"Kirby et le Monde Oublié", plat:"Switch", date:"2022-03-25", score:85, scoreType:"critic", hltb:"12h", blurb:"Premier vrai Kirby en 3D, transformations Bouffe-tout inoubliables."},
+            {slug:"kirby-rtdl-dx-s", title:"Kirby's Return to Dream Land Deluxe", plat:"Switch", date:"2023-02-24", score:79, scoreType:"critic", hltb:"10h", blurb:"Coopération à quatre et retour aux fondamentaux, version enrichie."}
           ]
         },
         {
@@ -664,18 +664,18 @@ const DATA = {
           name: "Yakuza / Like a Dragon",
           note: "Yakuza 0 est une préquelle et la meilleure entrée possible ; ensuite les Kiwami reprennent les deux premiers, puis on suit l'ordre numérique.",
           games: [
+            {slug:"yakuza-5-s", title:"Yakuza 5 Remastered", plat:"PS4", date:"2015-12-08", score:83, scoreType:"critic", hltb:"50h", blurb:"Cinq villes et cinq protagonistes, l'épisode le plus vaste de l'ère Kiryu."},
             {slug:"yakuza-0-s", title:"Yakuza 0", plat:"PS4", date:"2017-01-24", score:85, scoreType:"critic", hltb:"40h", blurb:"Osaka et Tokyo des années 80, préquelle et porte d'entrée idéale."},
             {slug:"yakuza-kiwami-s", title:"Yakuza Kiwami", plat:"PS4", date:"2017-08-29", score:80, scoreType:"critic", hltb:"25h", blurb:"Remake du premier épisode, Kiryu sort de prison."},
+            {slug:"yakuza-6-s", title:"Yakuza 6: The Song of Life", plat:"PS4", date:"2018-04-17", score:82, scoreType:"critic", hltb:"30h", blurb:"Conclusion de l'histoire de Kiryu, plus intime et resserrée."},
             {slug:"yakuza-kiwami-2-s", title:"Yakuza Kiwami 2", plat:"PS4", date:"2018-08-28", score:84, scoreType:"critic", hltb:"30h", blurb:"Remake du deuxième, souvent cité comme le meilleur scénario."},
+            {slug:"judgment-s", title:"Judgment", plat:"PS4", date:"2019-06-25", score:80, scoreType:"critic", hltb:"35h", blurb:"Spin-off de détective privé, enquêtes et filatures dans Kamurocho."},
             {slug:"yakuza-3-s", title:"Yakuza 3 Remastered", plat:"PS4", date:"2019-08-20", score:78, scoreType:"critic", hltb:"30h", blurb:"Kiryu tient un orphelinat à Okinawa, l'épisode le plus paisible."},
             {slug:"yakuza-4-s", title:"Yakuza 4 Remastered", plat:"PS4", date:"2019-10-29", score:78, scoreType:"critic", hltb:"30h", blurb:"Quatre protagonistes se relaient, structure chorale inaugurale."},
-            {slug:"yakuza-5-s", title:"Yakuza 5 Remastered", plat:"PS4", date:"2015-12-08", score:83, scoreType:"critic", hltb:"50h", blurb:"Cinq villes et cinq protagonistes, l'épisode le plus vaste de l'ère Kiryu."},
-            {slug:"yakuza-6-s", title:"Yakuza 6: The Song of Life", plat:"PS4", date:"2018-04-17", score:82, scoreType:"critic", hltb:"30h", blurb:"Conclusion de l'histoire de Kiryu, plus intime et resserrée."},
             {slug:"lad-7-s", title:"Like a Dragon: Yakuza", plat:"PS4", date:"2020-11-10", score:84, scoreType:"critic", hltb:"45h", blurb:"Ichiban prend la relève et la série bascule en RPG au tour par tour."},
+            {slug:"lost-judgment-s", title:"Lost Judgment", plat:"PS5", date:"2021-09-24", score:84, scoreType:"critic", hltb:"40h", blurb:"Suite plus grave sur le harcèlement scolaire, meilleure que l'originale."},
             {slug:"lad-gaiden-s", title:"Like a Dragon Gaiden", plat:"PS5", date:"2023-11-09", score:82, scoreType:"critic", hltb:"20h", blurb:"Interlude compact sur Kiryu, indispensable avant Infinite Wealth."},
-            {slug:"lad-infinite-wealth-s", title:"Like a Dragon: Infinite Wealth", plat:"PS5", date:"2024-01-26", score:89, scoreType:"critic", hltb:"60h", blurb:"Hawaï et Japon réunis, sommet de la nouvelle formule RPG."},
-            {slug:"judgment-s", title:"Judgment", plat:"PS4", date:"2019-06-25", score:80, scoreType:"critic", hltb:"35h", blurb:"Spin-off de détective privé, enquêtes et filatures dans Kamurocho."},
-            {slug:"lost-judgment-s", title:"Lost Judgment", plat:"PS5", date:"2021-09-24", score:84, scoreType:"critic", hltb:"40h", blurb:"Suite plus grave sur le harcèlement scolaire, meilleure que l'originale."}
+            {slug:"lad-infinite-wealth-s", title:"Like a Dragon: Infinite Wealth", plat:"PS5", date:"2024-01-26", score:89, scoreType:"critic", hltb:"60h", blurb:"Hawaï et Japon réunis, sommet de la nouvelle formule RPG."}
           ]
         },
         {
@@ -683,14 +683,14 @@ const DATA = {
           name: "Xeno",
           note: "Trois sous-séries sans lien scénaristique direct mais aux thèmes communs. Xenoblade est la branche la plus accessible pour commencer.",
           games: [
-            {slug:"xenoblade-1-s", title:"Xenoblade Chronicles: Definitive Edition", plat:"Switch", date:"2020-05-29", score:89, scoreType:"critic", hltb:"60h", blurb:"Monde ouvert porté par deux titans, la meilleure entrée dans l'univers."},
-            {slug:"xenoblade-2-s", title:"Xenoblade Chronicles 2", plat:"Switch", date:"2017-12-01", score:83, scoreType:"critic", hltb:"70h", blurb:"Nuages, Lames et système de combat touffu, récit très attachant."},
-            {slug:"xenoblade-3-s", title:"Xenoblade Chronicles 3", plat:"Switch", date:"2022-07-29", score:89, scoreType:"critic", hltb:"70h", blurb:"Synthèse des deux précédents, sommet narratif de Monolith Soft."},
-            {slug:"xenoblade-x-s", title:"Xenoblade Chronicles X", plat:"WiiU", date:"2015-12-04", score:84, scoreType:"critic", hltb:"70h", blurb:"Le plus vaste de tous, colonisation d'une planète et mechas pilotables."},
             {slug:"xenogears-s", title:"Xenogears", plat:"PS1", date:"1998-10-20", score:84, scoreType:"critic", hltb:"60h", blurb:"L'œuvre fondatrice de Takahashi, ambitieuse et inachevée."},
             {slug:"xenosaga-1-s", title:"Xenosaga Episode I", plat:"PS2", date:"2003-02-25", score:83, scoreType:"critic", hltb:"40h", blurb:"Space opera philosophique très narratif, début de la trilogie."},
             {slug:"xenosaga-2-s", title:"Xenosaga Episode II", plat:"PS2", date:"2005-02-15", score:73, scoreType:"critic", hltb:"35h", blurb:"Le maillon faible, mais indispensable pour suivre l'intrigue."},
-            {slug:"xenosaga-3-s", title:"Xenosaga Episode III", plat:"PS2", date:"2006-08-29", score:81, scoreType:"critic", hltb:"35h", blurb:"Conclusion resserrée et spectaculaire de la trilogie KOS-MOS."}
+            {slug:"xenosaga-3-s", title:"Xenosaga Episode III", plat:"PS2", date:"2006-08-29", score:81, scoreType:"critic", hltb:"35h", blurb:"Conclusion resserrée et spectaculaire de la trilogie KOS-MOS."},
+            {slug:"xenoblade-x-s", title:"Xenoblade Chronicles X", plat:"WiiU", date:"2015-12-04", score:84, scoreType:"critic", hltb:"70h", blurb:"Le plus vaste de tous, colonisation d'une planète et mechas pilotables."},
+            {slug:"xenoblade-2-s", title:"Xenoblade Chronicles 2", plat:"Switch", date:"2017-12-01", score:83, scoreType:"critic", hltb:"70h", blurb:"Nuages, Lames et système de combat touffu, récit très attachant."},
+            {slug:"xenoblade-1-s", title:"Xenoblade Chronicles: Definitive Edition", plat:"Switch", date:"2020-05-29", score:89, scoreType:"critic", hltb:"60h", blurb:"Monde ouvert porté par deux titans, la meilleure entrée dans l'univers."},
+            {slug:"xenoblade-3-s", title:"Xenoblade Chronicles 3", plat:"Switch", date:"2022-07-29", score:89, scoreType:"critic", hltb:"70h", blurb:"Synthèse des deux précédents, sommet narratif de Monolith Soft."}
           ]
         },
         {
@@ -698,19 +698,19 @@ const DATA = {
           name: "Mario RPG",
           note: "Trois branches indépendantes : Super Mario RPG à l'origine, les Paper Mario et les Mario & Luigi. On peut piocher dans n'importe quel ordre.",
           games: [
-            {slug:"smrpg-s", title:"Super Mario RPG", plat:"Switch", date:"2023-11-17", score:81, scoreType:"critic", hltb:"15h", blurb:"Remake du fondateur signé Square, à l'origine de toutes les branches."},
             {slug:"paper-mario-1-s", title:"Paper Mario", plat:"N64", date:"2001-02-05", score:93, scoreType:"critic", hltb:"25h", blurb:"Premier Paper Mario, l'écriture et le système de badges naissent ici."},
-            {slug:"paper-mario-ttyd-s", title:"Paper Mario: La Porte Millénaire", plat:"GC", date:"2004-10-11", score:91, scoreType:"user", hltb:"35h", blurb:"Sommet incontesté de la branche papier, écriture hilarante."},
-            {slug:"paper-mario-spm-s", title:"Super Paper Mario", plat:"Wii", date:"2007-04-09", score:85, scoreType:"critic", hltb:"16h", blurb:"Bascule entre 2D et 3D, le récit le plus surprenant de la branche."},
-            {slug:"paper-mario-origami-s", title:"Paper Mario: The Origami King", plat:"Switch", date:"2020-07-17", score:80, scoreType:"critic", hltb:"30h", blurb:"Aventure moderne au ton juste, malgré des combats clivants."},
-            {slug:"paper-mario-color-splash-s", title:"Paper Mario: Color Splash", plat:"WiiU", date:"2016-10-07", score:76, scoreType:"critic", hltb:"25h", blurb:"Très beau et très drôle, mais système de cartes contraignant."},
-            {slug:"paper-mario-sticker-s", title:"Paper Mario: Sticker Star", plat:"3DS", date:"2012-11-11", score:75, scoreType:"critic", hltb:"25h", blurb:"Le virage vers les autocollants, épisode le plus contesté."},
             {slug:"ml-superstar-s", title:"Mario & Luigi: Superstar Saga", plat:"GBA", date:"2003-11-17", score:86, scoreType:"user", hltb:"15h", blurb:"Naissance du duo, combos et timing au cœur des combats."},
+            {slug:"paper-mario-ttyd-s", title:"Paper Mario: La Porte Millénaire", plat:"GC", date:"2004-10-11", score:91, scoreType:"user", hltb:"35h", blurb:"Sommet incontesté de la branche papier, écriture hilarante."},
             {slug:"ml-partners-s", title:"Mario & Luigi: Partners in Time", plat:"DS", date:"2005-11-28", score:85, scoreType:"user", hltb:"17h", blurb:"Les frères épaulés par leurs versions bébés, quatre personnages à gérer."},
+            {slug:"paper-mario-spm-s", title:"Super Paper Mario", plat:"Wii", date:"2007-04-09", score:85, scoreType:"critic", hltb:"16h", blurb:"Bascule entre 2D et 3D, le récit le plus surprenant de la branche."},
             {slug:"ml-bis-s", title:"Mario & Luigi: Voyage au centre de Bowser", plat:"DS", date:"2009-09-14", score:89, scoreType:"user", hltb:"25h", blurb:"Bowser jouable et son intérieur explorable, sommet de la branche."},
+            {slug:"paper-mario-sticker-s", title:"Paper Mario: Sticker Star", plat:"3DS", date:"2012-11-11", score:75, scoreType:"critic", hltb:"25h", blurb:"Le virage vers les autocollants, épisode le plus contesté."},
             {slug:"ml-dream-team-s", title:"Mario & Luigi: Dream Team", plat:"3DS", date:"2013-08-11", score:81, scoreType:"critic", hltb:"30h", blurb:"Les frères plongent dans les rêves de Luigi, démultiplié à l'infini."},
-            {slug:"ml-brothership-s", title:"Mario & Luigi: L'Épopée fraternelle", plat:"Switch", date:"2024-11-07", score:76, scoreType:"critic", hltb:"30h", blurb:"Retour du duo après dix ans, archipel à reconnecter."},
-            {slug:"ml-paper-jam-s", title:"Mario & Luigi: Paper Jam", plat:"3DS", date:"2016-01-22", score:74, scoreType:"critic", hltb:"25h", blurb:"Crossover des deux branches, le plus dispensable des Mario & Luigi."}
+            {slug:"ml-paper-jam-s", title:"Mario & Luigi: Paper Jam", plat:"3DS", date:"2016-01-22", score:74, scoreType:"critic", hltb:"25h", blurb:"Crossover des deux branches, le plus dispensable des Mario & Luigi."},
+            {slug:"paper-mario-color-splash-s", title:"Paper Mario: Color Splash", plat:"WiiU", date:"2016-10-07", score:76, scoreType:"critic", hltb:"25h", blurb:"Très beau et très drôle, mais système de cartes contraignant."},
+            {slug:"paper-mario-origami-s", title:"Paper Mario: The Origami King", plat:"Switch", date:"2020-07-17", score:80, scoreType:"critic", hltb:"30h", blurb:"Aventure moderne au ton juste, malgré des combats clivants."},
+            {slug:"smrpg-s", title:"Super Mario RPG", plat:"Switch", date:"2023-11-17", score:81, scoreType:"critic", hltb:"15h", blurb:"Remake du fondateur signé Square, à l'origine de toutes les branches."},
+            {slug:"ml-brothership-s", title:"Mario & Luigi: L'Épopée fraternelle", plat:"Switch", date:"2024-11-07", score:76, scoreType:"critic", hltb:"30h", blurb:"Retour du duo après dix ans, archipel à reconnecter."}
           ]
         },
         {
@@ -731,31 +731,31 @@ const DATA = {
           note: "Nocturne pose le ton de la série, V est la version moderne la plus accessible. Les Digital Devil Saga forment un diptyque à faire d'affilée.",
           games: [
             {slug:"smt-nocturne-s", title:"Shin Megami Tensei III: Nocturne", plat:"PS2", date:"2004-10-12", score:90, scoreType:"user", hltb:"50h", blurb:"Tokyo détruit et renaissance du monde, l'épisode le plus culte."},
-            {slug:"smt-5-vengeance-s", title:"Shin Megami Tensei V: Vengeance", plat:"Switch", date:"2024-06-14", score:88, scoreType:"critic", hltb:"60h", blurb:"Version définitive du cinquième, avec un second scénario complet."},
             {slug:"smt-dds-1-s", title:"Shin Megami Tensei: Digital Devil Saga", plat:"PS2", date:"2005-04-05", score:84, scoreType:"critic", hltb:"30h", blurb:"Les héros dévorent leurs ennemis pour survivre, premier volet."},
             {slug:"smt-dds-2-s", title:"Shin Megami Tensei: Digital Devil Saga 2", plat:"PS2", date:"2005-10-04", score:84, scoreType:"critic", hltb:"30h", blurb:"Conclusion du diptyque, du Junkyard vers le monde réel."},
+            {slug:"smt-ds-oc-s", title:"Devil Survivor Overclocked", plat:"3DS", date:"2011-08-23", score:78, scoreType:"critic", hltb:"30h", blurb:"Tokyo bouclé sept jours, la branche tactique de la série."},
             {slug:"smt-4-s", title:"Shin Megami Tensei IV", plat:"3DS", date:"2013-07-16", score:83, scoreType:"critic", hltb:"45h", blurb:"Apocalypse démoniaque entre royaume médiéval et Tokyo en ruines."},
-            {slug:"smt-4a-s", title:"Shin Megami Tensei IV: Apocalypse", plat:"3DS", date:"2016-09-20", score:84, scoreType:"critic", hltb:"40h", blurb:"Relecture de SMT IV du point de vue d'un chasseur ressuscité."},
             {slug:"smt-ds2-rb-s", title:"Devil Survivor 2 Record Breaker", plat:"3DS", date:"2015-05-05", score:81, scoreType:"critic", hltb:"40h", blurb:"Les Septentriones assiègent le Japon, version définitive et complète."},
+            {slug:"smt-4a-s", title:"Shin Megami Tensei IV: Apocalypse", plat:"3DS", date:"2016-09-20", score:84, scoreType:"critic", hltb:"40h", blurb:"Relecture de SMT IV du point de vue d'un chasseur ressuscité."},
             {slug:"smt-sj-redux-s", title:"Shin Megami Tensei: Strange Journey Redux", plat:"3DS", date:"2018-05-15", score:78, scoreType:"critic", hltb:"40h", blurb:"Expédition antarctique austère, version enrichie d'une fin inédite."},
-            {slug:"smt-ds-oc-s", title:"Devil Survivor Overclocked", plat:"3DS", date:"2011-08-23", score:78, scoreType:"critic", hltb:"30h", blurb:"Tokyo bouclé sept jours, la branche tactique de la série."}
+            {slug:"smt-5-vengeance-s", title:"Shin Megami Tensei V: Vengeance", plat:"Switch", date:"2024-06-14", score:88, scoreType:"critic", hltb:"60h", blurb:"Version définitive du cinquième, avec un second scénario complet."}
           ]
         },
         {
           slug: "trails",
           name: "Trails / Legend of Heroes",
-          note: "La seule saga de cette liste à suivre impérativement dans l'ordre : c'est un récit unique de vingt ans, chaque arc reprenant les personnages du précédent.",
+          note: "La seule saga de cette liste à suivre impérativement dans l'ordre de sortie : c'est un récit unique de vingt ans, chaque arc reprenant les personnages du précédent.",
           games: [
             {slug:"trails-sky-fc-s", title:"Trails in the Sky FC", plat:"PSP", date:"2011-03-29", score:84, scoreType:"critic", hltb:"45h", blurb:"Estelle et Joshua parcourent Liberl, point de départ obligatoire."},
             {slug:"trails-sky-sc-s", title:"Trails in the Sky SC", plat:"PC", date:"2015-10-29", score:86, scoreType:"critic", hltb:"60h", blurb:"Suite directe qui paie tout ce que le premier avait installé."},
-            {slug:"trails-sky-3rd-s", title:"Trails in the Sky the 3rd", plat:"PC", date:"2017-05-03", score:80, scoreType:"critic", hltb:"50h", blurb:"Épilogue de l'arc Liberl, structure en donjon et récits annexes."},
-            {slug:"trails-zero-s", title:"Trails from Zero", plat:"Switch", date:"2022-09-27", score:84, scoreType:"critic", hltb:"45h", blurb:"Nouvel arc à Crossbell, enquêtes policières et ville tentaculaire."},
-            {slug:"trails-azure-s", title:"Trails to Azure", plat:"Switch", date:"2023-07-14", score:85, scoreType:"critic", hltb:"55h", blurb:"Conclusion de l'arc Crossbell, l'un des sommets de la saga."},
             {slug:"trails-cs-1-s", title:"Trails of Cold Steel", plat:"PS3", date:"2015-12-22", score:82, scoreType:"critic", hltb:"60h", blurb:"Académie militaire d'Erebonia, classe VII et tensions de classe."},
             {slug:"trails-cs-2-s", title:"Trails of Cold Steel II", plat:"PS3", date:"2016-09-06", score:84, scoreType:"critic", hltb:"70h", blurb:"Guerre civile, suite immédiate du premier Cold Steel."},
+            {slug:"trails-sky-3rd-s", title:"Trails in the Sky the 3rd", plat:"PC", date:"2017-05-03", score:80, scoreType:"critic", hltb:"50h", blurb:"Épilogue de l'arc Liberl, structure en donjon et récits annexes."},
             {slug:"trails-cs-3-s", title:"Trails of Cold Steel III", plat:"PS4", date:"2019-10-22", score:85, scoreType:"critic", hltb:"70h", blurb:"Convergence de tous les arcs précédents, sommet de la saga."},
             {slug:"trails-cs-4-s", title:"Trails of Cold Steel IV", plat:"PS4", date:"2020-10-27", score:82, scoreType:"critic", hltb:"75h", blurb:"Conclusion de l'arc Erebonia, casting démesuré."},
+            {slug:"trails-zero-s", title:"Trails from Zero", plat:"Switch", date:"2022-09-27", score:84, scoreType:"critic", hltb:"45h", blurb:"Nouvel arc à Crossbell, enquêtes policières et ville tentaculaire."},
             {slug:"trails-reverie-s", title:"Trails into Reverie", plat:"PS4", date:"2023-07-07", score:84, scoreType:"critic", hltb:"60h", blurb:"Épilogue qui réunit les trois groupes de héros de la saga."},
+            {slug:"trails-azure-s", title:"Trails to Azure", plat:"Switch", date:"2023-07-14", score:85, scoreType:"critic", hltb:"55h", blurb:"Conclusion de l'arc Crossbell, l'un des sommets de la saga."},
             {slug:"trails-daybreak-s", title:"Trails through Daybreak", plat:"PS5", date:"2024-07-05", score:82, scoreType:"critic", hltb:"60h", blurb:"Nouvel arc à Calvard, entrée moderne dans l'univers."}
           ]
         },
@@ -764,15 +764,15 @@ const DATA = {
           name: "Monster Hunter",
           note: "World a modernisé la série et reste la meilleure entrée ; Rise est plus rapide et portable. Les épisodes classiques sont à réserver aux convaincus.",
           games: [
-            {slug:"mh-world-s", title:"Monster Hunter: World", plat:"PS4", date:"2018-01-26", score:90, scoreType:"critic", hltb:"50h", blurb:"La chasse enfin fluide et lisible, entrée idéale dans la série."},
-            {slug:"mh-wilds-s", title:"Monster Hunter Wilds", plat:"PS5", date:"2025-02-28", score:88, scoreType:"critic", hltb:"50h", blurb:"Écosystèmes vivants et météo changeante, dernier grand épisode."},
-            {slug:"mh-4u-s", title:"Monster Hunter 4 Ultimate", plat:"3DS", date:"2015-02-13", score:88, scoreType:"user", hltb:"60h", blurb:"La verticalité et la monte, sommet de l'ère portable."},
-            {slug:"mh-rise-s", title:"Monster Hunter Rise", plat:"Switch", date:"2021-03-26", score:87, scoreType:"critic", hltb:"40h", blurb:"Filoptère et chasse aérienne, le plus nerveux de la série."},
+            {slug:"mh-freedom-unite-s", title:"Monster Hunter Freedom Unite", plat:"PSP", date:"2009-06-22", score:76, scoreType:"critic", hltb:"100h", blurb:"Le monstre de contenu qui a lancé la série au Japon, très rugueux."},
             {slug:"mh-3u-s", title:"Monster Hunter 3 Ultimate", plat:"WiiU", date:"2013-03-19", score:85, scoreType:"critic", hltb:"50h", blurb:"La chasse sous-marine, version la plus complète de l'ère Tri."},
-            {slug:"mh-gu-s", title:"Monster Hunter Generations Ultimate", plat:"Switch", date:"2018-08-28", score:84, scoreType:"critic", hltb:"60h", blurb:"Épisode anniversaire aux styles de chasse libres."},
+            {slug:"mh-4u-s", title:"Monster Hunter 4 Ultimate", plat:"3DS", date:"2015-02-13", score:88, scoreType:"user", hltb:"60h", blurb:"La verticalité et la monte, sommet de l'ère portable."},
             {slug:"mh-stories-1-s", title:"Monster Hunter Stories", plat:"3DS", date:"2017-09-08", score:81, scoreType:"critic", hltb:"35h", blurb:"La branche RPG au tour par tour, monstres à élever."},
+            {slug:"mh-world-s", title:"Monster Hunter: World", plat:"PS4", date:"2018-01-26", score:90, scoreType:"critic", hltb:"50h", blurb:"La chasse enfin fluide et lisible, entrée idéale dans la série."},
+            {slug:"mh-gu-s", title:"Monster Hunter Generations Ultimate", plat:"Switch", date:"2018-08-28", score:84, scoreType:"critic", hltb:"60h", blurb:"Épisode anniversaire aux styles de chasse libres."},
+            {slug:"mh-rise-s", title:"Monster Hunter Rise", plat:"Switch", date:"2021-03-26", score:87, scoreType:"critic", hltb:"40h", blurb:"Filoptère et chasse aérienne, le plus nerveux de la série."},
             {slug:"mh-stories-2-s", title:"Monster Hunter Stories 2", plat:"Switch", date:"2021-07-09", score:79, scoreType:"critic", hltb:"50h", blurb:"Suite plus ample et mieux écrite de la branche RPG."},
-            {slug:"mh-freedom-unite-s", title:"Monster Hunter Freedom Unite", plat:"PSP", date:"2009-06-22", score:76, scoreType:"critic", hltb:"100h", blurb:"Le monstre de contenu qui a lancé la série au Japon, très rugueux."}
+            {slug:"mh-wilds-s", title:"Monster Hunter Wilds", plat:"PS5", date:"2025-02-28", score:88, scoreType:"critic", hltb:"50h", blurb:"Écosystèmes vivants et météo changeante, dernier grand épisode."}
           ]
         },
         {
@@ -780,18 +780,18 @@ const DATA = {
           name: "Pokémon",
           note: "Les générations sont indépendantes : viser la version définitive de chacune plutôt que ses éditions initiales.",
           games: [
+            {slug:"pkmn-rb-s", title:"Pokémon Rouge / Bleu", plat:"GB", date:"1998-09-28", score:87, scoreType:"user", hltb:"26h", blurb:"L'origine du phénomène, rugueuse mais historiquement inévitable."},
             {slug:"pkmn-gs-s", title:"Pokémon Or / Argent", plat:"GBC", date:"2000-10-15", score:92, scoreType:"user", hltb:"30h", blurb:"Deux régions en une cartouche, l'exploit technique de la Game Boy."},
-            {slug:"pkmn-hgss-s", title:"Pokémon HeartGold / SoulSilver", plat:"DS", date:"2010-03-14", score:90, scoreType:"user", hltb:"40h", blurb:"Johto et Kanto réunis, souvent considéré comme le sommet de la série."},
+            {slug:"pkmn-frlg-s", title:"Pokémon Rouge Feu / Vert Feuille", plat:"GBA", date:"2004-09-07", score:85, scoreType:"user", hltb:"24h", blurb:"Remake de la première génération, la meilleure façon de faire Kanto."},
             {slug:"pkmn-emerald-s", title:"Pokémon Émeraude", plat:"GBA", date:"2005-04-30", score:88, scoreType:"user", hltb:"24h", blurb:"Version définitive de Hoenn, contenu post-jeu étoffé."},
             {slug:"pkmn-platinum-s", title:"Pokémon Platine", plat:"DS", date:"2009-03-22", score:88, scoreType:"user", hltb:"40h", blurb:"Version définitive de Sinnoh, avec le Monde Distorsion."},
-            {slug:"pkmn-rb-s", title:"Pokémon Rouge / Bleu", plat:"GB", date:"1998-09-28", score:87, scoreType:"user", hltb:"26h", blurb:"L'origine du phénomène, rugueuse mais historiquement inévitable."},
-            {slug:"pkmn-frlg-s", title:"Pokémon Rouge Feu / Vert Feuille", plat:"GBA", date:"2004-09-07", score:85, scoreType:"user", hltb:"24h", blurb:"Remake de la première génération, la meilleure façon de faire Kanto."},
+            {slug:"pkmn-hgss-s", title:"Pokémon HeartGold / SoulSilver", plat:"DS", date:"2010-03-14", score:90, scoreType:"user", hltb:"40h", blurb:"Johto et Kanto réunis, souvent considéré comme le sommet de la série."},
             {slug:"pkmn-b2w2-s", title:"Pokémon Noir 2 / Blanc 2", plat:"DS", date:"2012-10-07", score:84, scoreType:"user", hltb:"35h", blurb:"Les seules vraies suites de la série, scénario le plus travaillé."},
+            {slug:"pkmn-xy-s", title:"Pokémon X / Y", plat:"3DS", date:"2013-10-12", score:84, scoreType:"user", hltb:"32h", blurb:"Le passage à la 3D, avec Kalos et les méga-évolutions."},
             {slug:"pkmn-oras-s", title:"Pokémon Rubis Oméga / Saphir Alpha", plat:"3DS", date:"2014-11-21", score:84, scoreType:"user", hltb:"30h", blurb:"Hoenn refait en 3D, avec l'envol libre à dos de Pokémon."},
             {slug:"pkmn-usum-s", title:"Pokémon Ultra-Soleil / Ultra-Lune", plat:"3DS", date:"2017-11-17", score:84, scoreType:"critic", hltb:"35h", blurb:"Version définitive d'Alola, sans arènes traditionnelles."},
-            {slug:"pkmn-xy-s", title:"Pokémon X / Y", plat:"3DS", date:"2013-10-12", score:84, scoreType:"user", hltb:"32h", blurb:"Le passage à la 3D, avec Kalos et les méga-évolutions."},
-            {slug:"pkmn-arceus-s", title:"Pokémon Légendes: Arceus", plat:"Switch", date:"2022-01-28", score:83, scoreType:"critic", hltb:"40h", blurb:"La formule enfin bousculée : capture en temps réel et zones ouvertes."},
             {slug:"pkmn-swsh-s", title:"Pokémon Épée / Bouclier", plat:"Switch", date:"2019-11-15", score:80, scoreType:"critic", hltb:"30h", blurb:"Première génération sur salon, Terres Sauvages et Dynamax."},
+            {slug:"pkmn-arceus-s", title:"Pokémon Légendes: Arceus", plat:"Switch", date:"2022-01-28", score:83, scoreType:"critic", hltb:"40h", blurb:"La formule enfin bousculée : capture en temps réel et zones ouvertes."},
             {slug:"pkmn-sv-s", title:"Pokémon Écarlate / Violet", plat:"Switch", date:"2022-11-18", score:72, scoreType:"critic", hltb:"40h", blurb:"Premier monde ouvert de la série, excellent sur le fond, techniquement à la peine."}
           ]
         },
@@ -800,12 +800,12 @@ const DATA = {
           name: "Devil May Cry",
           note: "Le 3 est une préquelle et le meilleur point de départ pour le système de combat ; le 5 conclut l'histoire familiale de Dante et Vergil.",
           games: [
-            {slug:"dmc-3-s", title:"Devil May Cry 3: Dante's Awakening", plat:"PS2", date:"2005-03-01", score:89, scoreType:"user", hltb:"12h", blurb:"Dante jeune et arrogant, action exigeante et jubilatoire."},
             {slug:"dmc-1-s", title:"Devil May Cry", plat:"PS2", date:"2001-10-16", score:88, scoreType:"user", hltb:"8h", blurb:"Naissance du jeu d'action stylé, pistolets et épée démoniaque."},
-            {slug:"dmc-5-s", title:"Devil May Cry 5", plat:"PS4", date:"2019-03-08", score:88, scoreType:"critic", hltb:"15h", blurb:"Trois personnages jouables, aboutissement technique de la série."},
-            {slug:"dmc-reboot-s", title:"DmC: Devil May Cry", plat:"PS3", date:"2013-01-15", score:85, scoreType:"critic", hltb:"12h", blurb:"Relecture par Ninja Theory, clivante mais très solide."},
+            {slug:"dmc-2-s", title:"Devil May Cry 2", plat:"PS2", date:"2003-01-25", score:68, scoreType:"critic", hltb:"10h", blurb:"L'épisode raté de la série, à réserver aux complétistes."},
+            {slug:"dmc-3-s", title:"Devil May Cry 3: Dante's Awakening", plat:"PS2", date:"2005-03-01", score:89, scoreType:"user", hltb:"12h", blurb:"Dante jeune et arrogant, action exigeante et jubilatoire."},
             {slug:"dmc-4-s", title:"Devil May Cry 4", plat:"PS3", date:"2008-02-05", score:84, scoreType:"critic", hltb:"15h", blurb:"Nero et son Devil Bringer rejoignent Dante."},
-            {slug:"dmc-2-s", title:"Devil May Cry 2", plat:"PS2", date:"2003-01-25", score:68, scoreType:"critic", hltb:"10h", blurb:"L'épisode raté de la série, à réserver aux complétistes."}
+            {slug:"dmc-reboot-s", title:"DmC: Devil May Cry", plat:"PS3", date:"2013-01-15", score:85, scoreType:"critic", hltb:"12h", blurb:"Relecture par Ninja Theory, clivante mais très solide."},
+            {slug:"dmc-5-s", title:"Devil May Cry 5", plat:"PS4", date:"2019-03-08", score:88, scoreType:"critic", hltb:"15h", blurb:"Trois personnages jouables, aboutissement technique de la série."}
           ]
         },
         {
@@ -813,16 +813,16 @@ const DATA = {
           name: "Dragon Quest",
           note: "Épisodes indépendants. Le XI est la meilleure porte d'entrée moderne, le V le récit le plus aimé, le III le classique fondateur.",
           games: [
-            {slug:"dq-11-s-s", title:"Dragon Quest XI S", plat:"Switch", date:"2019-09-27", score:91, scoreType:"critic", hltb:"80h", blurb:"Aboutissement de la formule, version S enrichie d'un mode 16 bits."},
             {slug:"dq-8-s", title:"Dragon Quest VIII: L'Odyssée du Roi Maudit", plat:"PS2", date:"2005-11-15", score:91, scoreType:"user", hltb:"60h", blurb:"Le premier en 3D cel-shading, grandiose et généreux."},
+            {slug:"dq-4-s", title:"Dragon Quest IV: L'Épopée des Élus", plat:"DS", date:"2008-09-16", score:80, scoreType:"critic", hltb:"30h", blurb:"Récit en chapitres, un par héros, avant leur réunion."},
             {slug:"dq-5-s", title:"Dragon Quest V: La Fiancée Céleste", plat:"DS", date:"2009-02-17", score:89, scoreType:"user", hltb:"30h", blurb:"Une vie entière racontée, du berceau à la paternité."},
             {slug:"dq-9-s", title:"Dragon Quest IX: Les Sentinelles du Firmament", plat:"DS", date:"2010-07-11", score:85, scoreType:"user", hltb:"40h", blurb:"Pensé pour le jeu en groupe, contenu post-scénario immense."},
-            {slug:"dq-3-hd-s", title:"Dragon Quest III HD-2D Remake", plat:"Switch", date:"2024-11-14", score:84, scoreType:"critic", hltb:"40h", blurb:"Le classique fondateur en pixel art sublimé, jobs à composer."},
-            {slug:"dq-builders-2-s", title:"Dragon Quest Builders 2", plat:"Switch", date:"2019-07-12", score:84, scoreType:"critic", hltb:"60h", blurb:"Spin-off de construction étonnamment narratif et généreux."},
-            {slug:"dq-4-s", title:"Dragon Quest IV: L'Épopée des Élus", plat:"DS", date:"2008-09-16", score:80, scoreType:"critic", hltb:"30h", blurb:"Récit en chapitres, un par héros, avant leur réunion."},
             {slug:"dq-6-s", title:"Dragon Quest VI: Le Royaume des Songes", plat:"DS", date:"2011-02-14", score:78, scoreType:"critic", hltb:"35h", blurb:"Conclusion de la trilogie céleste, entre rêve et réalité."},
             {slug:"dq-7-s", title:"Dragon Quest VII: La Quête des vestiges du monde", plat:"3DS", date:"2016-09-16", score:78, scoreType:"critic", hltb:"60h", blurb:"Le plus long de la série, des îles entières à ramener à la vie."},
-            {slug:"dq-monsters-dp-s", title:"Dragon Quest Monsters: The Dark Prince", plat:"Switch", date:"2023-12-01", score:76, scoreType:"critic", hltb:"40h", blurb:"Élevage et synthèse de monstres, la branche Pokémon de la saga."}
+            {slug:"dq-builders-2-s", title:"Dragon Quest Builders 2", plat:"Switch", date:"2019-07-12", score:84, scoreType:"critic", hltb:"60h", blurb:"Spin-off de construction étonnamment narratif et généreux."},
+            {slug:"dq-11-s-s", title:"Dragon Quest XI S", plat:"Switch", date:"2019-09-27", score:91, scoreType:"critic", hltb:"80h", blurb:"Aboutissement de la formule, version S enrichie d'un mode 16 bits."},
+            {slug:"dq-monsters-dp-s", title:"Dragon Quest Monsters: The Dark Prince", plat:"Switch", date:"2023-12-01", score:76, scoreType:"critic", hltb:"40h", blurb:"Élevage et synthèse de monstres, la branche Pokémon de la saga."},
+            {slug:"dq-3-hd-s", title:"Dragon Quest III HD-2D Remake", plat:"Switch", date:"2024-11-14", score:84, scoreType:"critic", hltb:"40h", blurb:"Le classique fondateur en pixel art sublimé, jobs à composer."}
           ]
         },
         {
@@ -830,14 +830,14 @@ const DATA = {
           name: "Persona",
           note: "Les épisodes sont indépendants : commencer par le 5 Royal ou le 4 Golden, les deux versions définitives les plus abouties.",
           games: [
-            {slug:"persona-5-royal-s", title:"Persona 5 Royal", plat:"PS5", date:"2020-03-31", score:95, scoreType:"critic", hltb:"100h", blurb:"Les Voleurs Fantômes au grand complet, style et écriture inégalés."},
-            {slug:"persona-4-golden-s", title:"Persona 4 Golden", plat:"Vita", date:"2012-06-14", score:93, scoreType:"critic", hltb:"70h", blurb:"Enquête surnaturelle à Inaba, version définitive et chaleureuse."},
-            {slug:"persona-3-reload-s", title:"Persona 3 Reload", plat:"PS5", date:"2024-02-02", score:88, scoreType:"critic", hltb:"70h", blurb:"Remake de l'épisode fondateur, lycée le jour et Tartare la nuit."},
-            {slug:"persona-5-strikers-s", title:"Persona 5 Strikers", plat:"PS4", date:"2021-02-23", score:82, scoreType:"critic", hltb:"40h", blurb:"Suite directe du 5 en action musou, road trip estival."},
-            {slug:"persona-q-s", title:"Persona Q: Shadow of the Labyrinth", plat:"3DS", date:"2014-11-25", score:80, scoreType:"critic", hltb:"60h", blurb:"Les castings de 3 et 4 réunis dans un labyrinthe façon Etrian."},
+            {slug:"persona-1-s", title:"Revelations: Persona", plat:"PS1", date:"1996-12-20", score:75, scoreType:"critic", hltb:"40h", blurb:"L'origine de la série, dungeon-RPG rugueux né de Shin Megami Tensei."},
             {slug:"persona-2-is-s", title:"Persona 2: Innocent Sin", plat:"PSP", date:"2011-09-20", score:78, scoreType:"critic", hltb:"40h", blurb:"Le diptyque le plus sombre de la série, longtemps resté au Japon."},
+            {slug:"persona-4-golden-s", title:"Persona 4 Golden", plat:"Vita", date:"2012-06-14", score:93, scoreType:"critic", hltb:"70h", blurb:"Enquête surnaturelle à Inaba, version définitive et chaleureuse."},
+            {slug:"persona-q-s", title:"Persona Q: Shadow of the Labyrinth", plat:"3DS", date:"2014-11-25", score:80, scoreType:"critic", hltb:"60h", blurb:"Les castings de 3 et 4 réunis dans un labyrinthe façon Etrian."},
             {slug:"persona-q2-s", title:"Persona Q2: New Cinema Labyrinth", plat:"3DS", date:"2019-06-04", score:78, scoreType:"critic", hltb:"50h", blurb:"Les héros de 3, 4 et 5 piégés dans un cinéma."},
-            {slug:"persona-1-s", title:"Revelations: Persona", plat:"PS1", date:"1996-12-20", score:75, scoreType:"critic", hltb:"40h", blurb:"L'origine de la série, dungeon-RPG rugueux né de Shin Megami Tensei."}
+            {slug:"persona-5-royal-s", title:"Persona 5 Royal", plat:"PS5", date:"2020-03-31", score:95, scoreType:"critic", hltb:"100h", blurb:"Les Voleurs Fantômes au grand complet, style et écriture inégalés."},
+            {slug:"persona-5-strikers-s", title:"Persona 5 Strikers", plat:"PS4", date:"2021-02-23", score:82, scoreType:"critic", hltb:"40h", blurb:"Suite directe du 5 en action musou, road trip estival."},
+            {slug:"persona-3-reload-s", title:"Persona 3 Reload", plat:"PS5", date:"2024-02-02", score:88, scoreType:"critic", hltb:"70h", blurb:"Remake de l'épisode fondateur, lycée le jour et Tartare la nuit."}
           ]
         },
         {
@@ -845,17 +845,17 @@ const DATA = {
           name: "Fire Emblem",
           note: "Awakening et Three Houses sont les deux entrées modernes ; Path of Radiance et sa suite forment le sommet de l'ère classique.",
           games: [
-            {slug:"fe-por-s", title:"Fire Emblem: Path of Radiance", plat:"GC", date:"2005-10-17", score:90, scoreType:"user", hltb:"30h", blurb:"Premier épisode en 3D, Ike et les mercenaires de Greil."},
-            {slug:"fe-awakening-s", title:"Fire Emblem: Awakening", plat:"3DS", date:"2013-02-04", score:89, scoreType:"user", hltb:"25h", blurb:"L'épisode qui a sauvé la série, mariages et enfants entre unités."},
-            {slug:"fe-3h-s", title:"Fire Emblem: Three Houses", plat:"Switch", date:"2019-07-26", score:89, scoreType:"critic", hltb:"50h", blurb:"Académie et guerre civile, quatre routes radicalement différentes."},
+            {slug:"fe-bb-s", title:"Fire Emblem: The Binding Blade", plat:"GBA", date:"2002-03-29", score:null, scoreType:"none", hltb:"22h", blurb:"L'épisode de Roy, resté au Japon, suite directe de Blazing Blade."},
             {slug:"fe-7-s", title:"Fire Emblem (Blazing Blade)", plat:"GBA", date:"2003-11-03", score:89, scoreType:"user", hltb:"25h", blurb:"Premier épisode occidental, tactique et permadeath."},
             {slug:"fe-ss-s", title:"Fire Emblem: The Sacred Stones", plat:"GBA", date:"2005-05-23", score:87, scoreType:"user", hltb:"20h", blurb:"Jumeaux royaux et carte du monde libre, le plus accessible des GBA."},
-            {slug:"fe-echoes-s", title:"Fire Emblem Echoes: Shadows of Valentia", plat:"3DS", date:"2017-05-19", score:86, scoreType:"user", hltb:"30h", blurb:"Remake de Gaiden, doublé intégral et direction artistique superbe."},
-            {slug:"fe-fates-s", title:"Fire Emblem Fates", plat:"3DS", date:"2016-02-19", score:82, scoreType:"user", hltb:"30h", blurb:"Deux familles, deux voies : Héritage accessible ou Conquête exigeante."},
-            {slug:"fe-sd-s", title:"Fire Emblem: Shadow Dragon", plat:"DS", date:"2009-02-16", score:81, scoreType:"critic", hltb:"20h", blurb:"Remake du tout premier épisode, avec Marth."},
-            {slug:"fe-engage-s", title:"Fire Emblem Engage", plat:"Switch", date:"2023-01-20", score:80, scoreType:"critic", hltb:"40h", blurb:"Tactique la plus fine de la série, récit en retrait."},
+            {slug:"fe-por-s", title:"Fire Emblem: Path of Radiance", plat:"GC", date:"2005-10-17", score:90, scoreType:"user", hltb:"30h", blurb:"Premier épisode en 3D, Ike et les mercenaires de Greil."},
             {slug:"fe-rd-s", title:"Fire Emblem: Radiant Dawn", plat:"Wii", date:"2007-11-05", score:78, scoreType:"critic", hltb:"35h", blurb:"Suite directe de Path of Radiance, exigeante et chorale."},
-            {slug:"fe-bb-s", title:"Fire Emblem: The Binding Blade", plat:"GBA", date:"2002-03-29", score:null, scoreType:"none", hltb:"22h", blurb:"L'épisode de Roy, resté au Japon, suite directe de Blazing Blade."}
+            {slug:"fe-sd-s", title:"Fire Emblem: Shadow Dragon", plat:"DS", date:"2009-02-16", score:81, scoreType:"critic", hltb:"20h", blurb:"Remake du tout premier épisode, avec Marth."},
+            {slug:"fe-awakening-s", title:"Fire Emblem: Awakening", plat:"3DS", date:"2013-02-04", score:89, scoreType:"user", hltb:"25h", blurb:"L'épisode qui a sauvé la série, mariages et enfants entre unités."},
+            {slug:"fe-fates-s", title:"Fire Emblem Fates", plat:"3DS", date:"2016-02-19", score:82, scoreType:"user", hltb:"30h", blurb:"Deux familles, deux voies : Héritage accessible ou Conquête exigeante."},
+            {slug:"fe-echoes-s", title:"Fire Emblem Echoes: Shadows of Valentia", plat:"3DS", date:"2017-05-19", score:86, scoreType:"user", hltb:"30h", blurb:"Remake de Gaiden, doublé intégral et direction artistique superbe."},
+            {slug:"fe-3h-s", title:"Fire Emblem: Three Houses", plat:"Switch", date:"2019-07-26", score:89, scoreType:"critic", hltb:"50h", blurb:"Académie et guerre civile, quatre routes radicalement différentes."},
+            {slug:"fe-engage-s", title:"Fire Emblem Engage", plat:"Switch", date:"2023-01-20", score:80, scoreType:"critic", hltb:"40h", blurb:"Tactique la plus fine de la série, récit en retrait."}
           ]
         },
         {
@@ -863,18 +863,18 @@ const DATA = {
           name: "Castlevania",
           note: "Symphony of the Night invente le genre et reste la porte d'entrée ; les épisodes GBA et DS de Iga en sont les héritiers directs.",
           games: [
-            {slug:"cv-sotn-s", title:"Castlevania: Symphony of the Night", plat:"PS1", date:"1997-10-02", score:93, scoreType:"critic", hltb:"12h", blurb:"Le jeu qui a donné son nom au genre metroidvania."},
-            {slug:"cv-sc4-s", title:"Super Castlevania IV", plat:"SNES", date:"1991-12-04", score:90, scoreType:"user", hltb:"6h", blurb:"Sommet de l'ère linéaire, fouet à 360 degrés et ambiance inégalée."},
-            {slug:"cv-aria-s", title:"Castlevania: Aria of Sorrow", plat:"GBA", date:"2003-05-06", score:89, scoreType:"user", hltb:"8h", blurb:"Système d'âmes profond, sommet de la trilogie GBA."},
             {slug:"cv-cv3-s", title:"Castlevania III: Dracula's Curse", plat:"NES", date:"1990-09-01", score:88, scoreType:"user", hltb:"6h", blurb:"Chemins alternatifs et compagnons jouables, sommet de l'ère NES."},
+            {slug:"cv-sc4-s", title:"Super Castlevania IV", plat:"SNES", date:"1991-12-04", score:90, scoreType:"user", hltb:"6h", blurb:"Sommet de l'ère linéaire, fouet à 360 degrés et ambiance inégalée."},
+            {slug:"cv-bloodlines-s", title:"Castlevania: Bloodlines", plat:"MD", date:"1994-03-17", score:82, scoreType:"critic", hltb:"5h", blurb:"L'unique épisode Mega Drive, traversée de l'Europe d'après-guerre."},
+            {slug:"cv-sotn-s", title:"Castlevania: Symphony of the Night", plat:"PS1", date:"1997-10-02", score:93, scoreType:"critic", hltb:"12h", blurb:"Le jeu qui a donné son nom au genre metroidvania."},
+            {slug:"cv-com-s", title:"Castlevania: Circle of the Moon", plat:"GBA", date:"2001-06-11", score:84, scoreType:"critic", hltb:"8h", blurb:"Premier metroidvania portable, sombre et exigeant."},
+            {slug:"cv-hod-s", title:"Castlevania: Harmony of Dissonance", plat:"GBA", date:"2002-06-06", score:79, scoreType:"critic", hltb:"8h", blurb:"Le maillon intermédiaire de la trilogie GBA, plus lumineux."},
+            {slug:"cv-aria-s", title:"Castlevania: Aria of Sorrow", plat:"GBA", date:"2003-05-06", score:89, scoreType:"user", hltb:"8h", blurb:"Système d'âmes profond, sommet de la trilogie GBA."},
             {slug:"cv-dawn-s", title:"Castlevania: Dawn of Sorrow", plat:"DS", date:"2005-10-04", score:88, scoreType:"user", hltb:"9h", blurb:"Suite directe d'Aria, référence de la DS."},
             {slug:"cv-portrait-s", title:"Castlevania: Portrait of Ruin", plat:"DS", date:"2006-12-05", score:87, scoreType:"user", hltb:"9h", blurb:"Duo jouable explorant des tableaux maudits."},
-            {slug:"cv-ecclesia-s", title:"Castlevania: Order of Ecclesia", plat:"DS", date:"2008-10-21", score:87, scoreType:"user", hltb:"10h", blurb:"Le plus exigeant des DS, Shanoa et son système de glyphes."},
-            {slug:"cv-los-s", title:"Castlevania: Lords of Shadow", plat:"PS3", date:"2010-10-05", score:85, scoreType:"critic", hltb:"20h", blurb:"Relecture occidentale en action 3D, ambitieuse et spectaculaire."},
-            {slug:"cv-com-s", title:"Castlevania: Circle of the Moon", plat:"GBA", date:"2001-06-11", score:84, scoreType:"critic", hltb:"8h", blurb:"Premier metroidvania portable, sombre et exigeant."},
-            {slug:"cv-bloodlines-s", title:"Castlevania: Bloodlines", plat:"MD", date:"1994-03-17", score:82, scoreType:"critic", hltb:"5h", blurb:"L'unique épisode Mega Drive, traversée de l'Europe d'après-guerre."},
             {slug:"cv-rondo-s", title:"Castlevania: Rondo of Blood", plat:"PC-E", date:"2007-10-23", score:80, scoreType:"critic", hltb:"6h", blurb:"Le classique PC Engine, préquelle directe de Symphony of the Night."},
-            {slug:"cv-hod-s", title:"Castlevania: Harmony of Dissonance", plat:"GBA", date:"2002-06-06", score:79, scoreType:"critic", hltb:"8h", blurb:"Le maillon intermédiaire de la trilogie GBA, plus lumineux."}
+            {slug:"cv-ecclesia-s", title:"Castlevania: Order of Ecclesia", plat:"DS", date:"2008-10-21", score:87, scoreType:"user", hltb:"10h", blurb:"Le plus exigeant des DS, Shanoa et son système de glyphes."},
+            {slug:"cv-los-s", title:"Castlevania: Lords of Shadow", plat:"PS3", date:"2010-10-05", score:85, scoreType:"critic", hltb:"20h", blurb:"Relecture occidentale en action 3D, ambitieuse et spectaculaire."}
           ]
         },
         {
@@ -882,20 +882,20 @@ const DATA = {
           name: "Final Fantasy",
           note: "Chaque numéro est un univers autonome. Le IX ou le X sont les entrées classiques les plus sûres, le VII Remake et le XVI les plus modernes.",
           games: [
-            {slug:"ff-9-s", title:"Final Fantasy IX", plat:"PS1", date:"2000-11-14", score:94, scoreType:"critic", hltb:"40h", blurb:"Retour à l'heroic fantasy et hommage à toute la série."},
-            {slug:"ff-6-s", title:"Final Fantasy VI", plat:"SNES", date:"2022-02-23", score:92, scoreType:"user", hltb:"35h", blurb:"Le sommet 16 bits et son antagoniste légendaire, en Pixel Remaster."},
             {slug:"ff-7-s", title:"Final Fantasy VII", plat:"PS1", date:"1997-09-07", score:92, scoreType:"critic", hltb:"40h", blurb:"Le jeu qui a fait basculer le JRPG dans le grand public."},
-            {slug:"ff-7-rebirth-s", title:"Final Fantasy VII Rebirth", plat:"PS5", date:"2024-02-29", score:92, scoreType:"critic", hltb:"60h", blurb:"Deuxième volet du remake, monde ouvert et casting au sommet."},
-            {slug:"ff-8-s", title:"Final Fantasy VIII", plat:"PS1", date:"1999-09-09", score:90, scoreType:"critic", hltb:"45h", blurb:"Système de Gardiens clivant, romance et écoles de mercenaires."},
-            {slug:"ff-10-s", title:"Final Fantasy X / X-2 HD", plat:"PS4", date:"2013-12-26", score:89, scoreType:"user", hltb:"45h", blurb:"Le voyage de Tidus et Yuna à Spira, premier épisode doublé."},
-            {slug:"ff-7-remake-s", title:"Final Fantasy VII Remake", plat:"PS4", date:"2020-04-10", score:87, scoreType:"critic", hltb:"35h", blurb:"Midgar redéployée en jeu entier, combat hybride réussi."},
-            {slug:"ff-16-s", title:"Final Fantasy XVI", plat:"PS5", date:"2023-06-22", score:87, scoreType:"critic", hltb:"40h", blurb:"Virage action et politique, Clive et les Primordiaux."},
-            {slug:"ff-12-s", title:"Final Fantasy XII: The Zodiac Age", plat:"PS4", date:"2017-07-11", score:85, scoreType:"critic", hltb:"60h", blurb:"Ivalice semi-ouverte et gambits, version remaniée et accélérée."},
-            {slug:"ff-4-s", title:"Final Fantasy IV", plat:"DS", date:"2008-07-22", score:85, scoreType:"critic", hltb:"25h", blurb:"Le drame de Cecil, premier épisode vraiment narratif de la série."},
             {slug:"ff-tactics-s", title:"Final Fantasy Tactics", plat:"PS1", date:"1998-01-28", score:83, scoreType:"critic", hltb:"40h", blurb:"Tactical-RPG politique de Matsuno, sommet du genre."},
+            {slug:"ff-8-s", title:"Final Fantasy VIII", plat:"PS1", date:"1999-09-09", score:90, scoreType:"critic", hltb:"45h", blurb:"Système de Gardiens clivant, romance et écoles de mercenaires."},
+            {slug:"ff-9-s", title:"Final Fantasy IX", plat:"PS1", date:"2000-11-14", score:94, scoreType:"critic", hltb:"40h", blurb:"Retour à l'heroic fantasy et hommage à toute la série."},
+            {slug:"ff-4-s", title:"Final Fantasy IV", plat:"DS", date:"2008-07-22", score:85, scoreType:"critic", hltb:"25h", blurb:"Le drame de Cecil, premier épisode vraiment narratif de la série."},
             {slug:"ff-14-s", title:"Final Fantasy XIV: A Realm Reborn", plat:"PC", date:"2013-08-27", score:83, scoreType:"critic", hltb:"100h", blurb:"Le MMO devenu l'un des meilleurs récits de toute la franchise."},
+            {slug:"ff-10-s", title:"Final Fantasy X / X-2 HD", plat:"PS4", date:"2013-12-26", score:89, scoreType:"user", hltb:"45h", blurb:"Le voyage de Tidus et Yuna à Spira, premier épisode doublé."},
             {slug:"ff-15-s", title:"Final Fantasy XV", plat:"PS4", date:"2016-11-29", score:81, scoreType:"critic", hltb:"50h", blurb:"Road trip entre quatre amis, inégal mais attachant."},
-            {slug:"ff-5-s", title:"Final Fantasy V", plat:"SNES", date:"2021-11-10", score:80, scoreType:"critic", hltb:"30h", blurb:"Le système de jobs le plus libre de la série, en Pixel Remaster."}
+            {slug:"ff-12-s", title:"Final Fantasy XII: The Zodiac Age", plat:"PS4", date:"2017-07-11", score:85, scoreType:"critic", hltb:"60h", blurb:"Ivalice semi-ouverte et gambits, version remaniée et accélérée."},
+            {slug:"ff-7-remake-s", title:"Final Fantasy VII Remake", plat:"PS4", date:"2020-04-10", score:87, scoreType:"critic", hltb:"35h", blurb:"Midgar redéployée en jeu entier, combat hybride réussi."},
+            {slug:"ff-5-s", title:"Final Fantasy V", plat:"SNES", date:"2021-11-10", score:80, scoreType:"critic", hltb:"30h", blurb:"Le système de jobs le plus libre de la série, en Pixel Remaster."},
+            {slug:"ff-6-s", title:"Final Fantasy VI", plat:"SNES", date:"2022-02-23", score:92, scoreType:"user", hltb:"35h", blurb:"Le sommet 16 bits et son antagoniste légendaire, en Pixel Remaster."},
+            {slug:"ff-16-s", title:"Final Fantasy XVI", plat:"PS5", date:"2023-06-22", score:87, scoreType:"critic", hltb:"40h", blurb:"Virage action et politique, Clive et les Primordiaux."},
+            {slug:"ff-7-rebirth-s", title:"Final Fantasy VII Rebirth", plat:"PS5", date:"2024-02-29", score:92, scoreType:"critic", hltb:"60h", blurb:"Deuxième volet du remake, monde ouvert et casting au sommet."}
           ]
         },
         {
@@ -903,10 +903,10 @@ const DATA = {
           name: "Pikmin",
           note: "Le 1 pose la tension du compte à rebours, le 2 la retire, le 4 est le plus accueillant. Tous se suivent sans dépendance scénaristique.",
           games: [
-            {slug:"pikmin-2-s", title:"Pikmin 2", plat:"GC", date:"2004-08-30", score:90, scoreType:"user", hltb:"20h", blurb:"Sans limite de temps, grottes et trésors à ramener."},
             {slug:"pikmin-1-s", title:"Pikmin", plat:"GC", date:"2001-12-02", score:88, scoreType:"user", hltb:"10h", blurb:"Trente jours pour réparer son vaisseau, tension permanente."},
-            {slug:"pikmin-4-s", title:"Pikmin 4", plat:"Switch", date:"2023-07-21", score:87, scoreType:"critic", hltb:"25h", blurb:"Le plus riche et le plus accessible, avec le chien Otchin."},
-            {slug:"pikmin-3-s", title:"Pikmin 3 Deluxe", plat:"Switch", date:"2020-10-30", score:85, scoreType:"critic", hltb:"15h", blurb:"Trois capitaines à coordonner, version enrichie du jeu Wii U."}
+            {slug:"pikmin-2-s", title:"Pikmin 2", plat:"GC", date:"2004-08-30", score:90, scoreType:"user", hltb:"20h", blurb:"Sans limite de temps, grottes et trésors à ramener."},
+            {slug:"pikmin-3-s", title:"Pikmin 3 Deluxe", plat:"Switch", date:"2020-10-30", score:85, scoreType:"critic", hltb:"15h", blurb:"Trois capitaines à coordonner, version enrichie du jeu Wii U."},
+            {slug:"pikmin-4-s", title:"Pikmin 4", plat:"Switch", date:"2023-07-21", score:87, scoreType:"critic", hltb:"25h", blurb:"Le plus riche et le plus accessible, avec le chien Otchin."}
           ]
         },
         {
@@ -914,15 +914,15 @@ const DATA = {
           name: "Metroid",
           note: "Dread ou Zero Mission pour la 2D, Prime Remastered pour la vue subjective. Les deux branches se répondent sans dépendre l'une de l'autre.",
           games: [
+            {slug:"metroid-1-s", title:"Metroid", plat:"NES", date:"1987-08-15", score:79, scoreType:"user", hltb:"6h", blurb:"L'original austère et labyrinthique, à réserver aux curieux."},
             {slug:"super-metroid-s", title:"Super Metroid", plat:"SNES", date:"1994-04-18", score:96, scoreType:"user", hltb:"8h", blurb:"Le modèle absolu du genre, exploration et solitude parfaites."},
-            {slug:"mp-remastered-s", title:"Metroid Prime Remastered", plat:"Switch", date:"2023-02-08", score:94, scoreType:"critic", hltb:"15h", blurb:"Le passage magistral à la première personne, remis à neuf."},
-            {slug:"mp-3-s", title:"Metroid Prime 3: Corruption", plat:"Wii", date:"2007-08-27", score:90, scoreType:"critic", hltb:"15h", blurb:"Conclusion de la trilogie Prime, visée au pointeur très réussie."},
-            {slug:"metroid-zm-s", title:"Metroid: Zero Mission", plat:"GBA", date:"2004-02-09", score:89, scoreType:"user", hltb:"6h", blurb:"Remake du tout premier Metroid, avec une fin inédite."},
-            {slug:"metroid-dread-s", title:"Metroid Dread", plat:"Switch", date:"2021-10-08", score:88, scoreType:"critic", hltb:"10h", blurb:"Suite directe de Fusion, traque implacable et 2D somptueuse."},
             {slug:"metroid-fusion-s", title:"Metroid Fusion", plat:"GBA", date:"2002-11-17", score:88, scoreType:"user", hltb:"6h", blurb:"Le plus dirigiste et le plus angoissant des Metroid 2D."},
+            {slug:"metroid-zm-s", title:"Metroid: Zero Mission", plat:"GBA", date:"2004-02-09", score:89, scoreType:"user", hltb:"6h", blurb:"Remake du tout premier Metroid, avec une fin inédite."},
             {slug:"mp-2-s", title:"Metroid Prime 2: Echoes", plat:"GC", date:"2004-11-15", score:88, scoreType:"user", hltb:"20h", blurb:"Suite plus sombre entre monde lumineux et monde des ténèbres."},
+            {slug:"mp-3-s", title:"Metroid Prime 3: Corruption", plat:"Wii", date:"2007-08-27", score:90, scoreType:"critic", hltb:"15h", blurb:"Conclusion de la trilogie Prime, visée au pointeur très réussie."},
             {slug:"metroid-sr-s", title:"Metroid: Samus Returns", plat:"3DS", date:"2017-09-15", score:88, scoreType:"user", hltb:"11h", blurb:"Remake de l'épisode Game Boy, contre-attaque au corps à corps."},
-            {slug:"metroid-1-s", title:"Metroid", plat:"NES", date:"1987-08-15", score:79, scoreType:"user", hltb:"6h", blurb:"L'original austère et labyrinthique, à réserver aux curieux."}
+            {slug:"metroid-dread-s", title:"Metroid Dread", plat:"Switch", date:"2021-10-08", score:88, scoreType:"critic", hltb:"10h", blurb:"Suite directe de Fusion, traque implacable et 2D somptueuse."},
+            {slug:"mp-remastered-s", title:"Metroid Prime Remastered", plat:"Switch", date:"2023-02-08", score:94, scoreType:"critic", hltb:"15h", blurb:"Le passage magistral à la première personne, remis à neuf."}
           ]
         },
         {
@@ -931,13 +931,13 @@ const DATA = {
           note: "L'ordre de sortie fonctionne, mais commencer par Snake Eater est très défendable : c'est la préquelle et l'épisode le plus autonome.",
           games: [
             {slug:"mgs-1-s", title:"Metal Gear Solid", plat:"PS1", date:"1998-10-21", score:94, scoreType:"critic", hltb:"12h", blurb:"Shadow Moses et la naissance de l'infiltration cinématographique."},
-            {slug:"mgs-4-s", title:"Metal Gear Solid 4: Guns of the Patriots", plat:"PS3", date:"2008-06-12", score:94, scoreType:"critic", hltb:"18h", blurb:"Conclusion de l'histoire de Solid Snake, mise en scène démesurée."},
-            {slug:"mgs-3-s", title:"Metal Gear Solid 3: Snake Eater", plat:"PS2", date:"2004-11-17", score:93, scoreType:"user", hltb:"16h", blurb:"Survie en jungle pendant la guerre froide, souvent cité comme le meilleur."},
-            {slug:"mgs-5-s", title:"Metal Gear Solid V: The Phantom Pain", plat:"PS4", date:"2015-09-01", score:93, scoreType:"critic", hltb:"45h", blurb:"Infiltration en monde ouvert, le gameplay le plus libre de la série."},
             {slug:"mgs-2-s", title:"Metal Gear Solid 2: Sons of Liberty", plat:"PS2", date:"2001-11-13", score:89, scoreType:"user", hltb:"11h", blurb:"Scénario vertigineux sur l'information, en avance de vingt ans."},
-            {slug:"mgs-pw-s", title:"Metal Gear Solid: Peace Walker", plat:"PSP", date:"2010-06-08", score:89, scoreType:"critic", hltb:"30h", blurb:"Chaînon entre Snake Eater et Phantom Pain, gestion de base incluse."},
             {slug:"mgs-ts-s", title:"Metal Gear Solid: The Twin Snakes", plat:"GC", date:"2004-03-09", score:88, scoreType:"user", hltb:"12h", blurb:"Remake du premier épisode avec le gameplay de MGS2."},
-            {slug:"mgr-s", title:"Metal Gear Rising: Revengeance", plat:"PS3", date:"2013-02-19", score:82, scoreType:"critic", hltb:"7h", blurb:"Spin-off d'action signé PlatinumGames, découpe libre et bande-son culte."}
+            {slug:"mgs-3-s", title:"Metal Gear Solid 3: Snake Eater", plat:"PS2", date:"2004-11-17", score:93, scoreType:"user", hltb:"16h", blurb:"Survie en jungle pendant la guerre froide, souvent cité comme le meilleur."},
+            {slug:"mgs-4-s", title:"Metal Gear Solid 4: Guns of the Patriots", plat:"PS3", date:"2008-06-12", score:94, scoreType:"critic", hltb:"18h", blurb:"Conclusion de l'histoire de Solid Snake, mise en scène démesurée."},
+            {slug:"mgs-pw-s", title:"Metal Gear Solid: Peace Walker", plat:"PSP", date:"2010-06-08", score:89, scoreType:"critic", hltb:"30h", blurb:"Chaînon entre Snake Eater et Phantom Pain, gestion de base incluse."},
+            {slug:"mgr-s", title:"Metal Gear Rising: Revengeance", plat:"PS3", date:"2013-02-19", score:82, scoreType:"critic", hltb:"7h", blurb:"Spin-off d'action signé PlatinumGames, découpe libre et bande-son culte."},
+            {slug:"mgs-5-s", title:"Metal Gear Solid V: The Phantom Pain", plat:"PS4", date:"2015-09-01", score:93, scoreType:"critic", hltb:"45h", blurb:"Infiltration en monde ouvert, le gameplay le plus libre de la série."}
           ]
         },
         {
@@ -945,13 +945,13 @@ const DATA = {
           name: "Souls / FromSoftware",
           note: "Elden Ring est de loin le plus accueillant grâce à son monde ouvert ; Dark Souls reste le plus cohérent architecturalement.",
           games: [
-            {slug:"elden-ring-s", title:"Elden Ring", plat:"PS5", date:"2022-02-25", score:96, scoreType:"critic", hltb:"60h", blurb:"L'Entre-terre en monde ouvert, synthèse de quinze ans de savoir-faire."},
-            {slug:"bloodborne-s", title:"Bloodborne", plat:"PS4", date:"2015-03-24", score:92, scoreType:"critic", hltb:"35h", blurb:"Yharnam gothique et combat offensif, le plus stylé du lot."},
-            {slug:"demons-souls-remake-s", title:"Demon's Souls", plat:"PS5", date:"2020-11-12", score:92, scoreType:"critic", hltb:"30h", blurb:"Le remake somptueux de l'acte fondateur, idéal pour commencer."},
-            {slug:"ds-2-s", title:"Dark Souls II: Scholar of the First Sin", plat:"PS4", date:"2015-04-07", score:91, scoreType:"critic", hltb:"45h", blurb:"Drangleic et ses cycles de malédiction, le plus vaste des trois."},
             {slug:"dark-souls-s", title:"Dark Souls", plat:"PS3", date:"2011-10-04", score:90, scoreType:"user", hltb:"40h", blurb:"Lordran interconnecté, le level design le plus admiré du genre."},
+            {slug:"bloodborne-s", title:"Bloodborne", plat:"PS4", date:"2015-03-24", score:92, scoreType:"critic", hltb:"35h", blurb:"Yharnam gothique et combat offensif, le plus stylé du lot."},
+            {slug:"ds-2-s", title:"Dark Souls II: Scholar of the First Sin", plat:"PS4", date:"2015-04-07", score:91, scoreType:"critic", hltb:"45h", blurb:"Drangleic et ses cycles de malédiction, le plus vaste des trois."},
+            {slug:"ds-3-s", title:"Dark Souls III", plat:"PS4", date:"2016-04-12", score:89, scoreType:"critic", hltb:"40h", blurb:"Conclusion rapide et spectaculaire de la trilogie."},
             {slug:"sekiro-s", title:"Sekiro: Shadows Die Twice", plat:"PS4", date:"2019-03-22", score:90, scoreType:"critic", hltb:"30h", blurb:"Parades au katana dans un Japon Sengoku fantasmé."},
-            {slug:"ds-3-s", title:"Dark Souls III", plat:"PS4", date:"2016-04-12", score:89, scoreType:"critic", hltb:"40h", blurb:"Conclusion rapide et spectaculaire de la trilogie."}
+            {slug:"demons-souls-remake-s", title:"Demon's Souls", plat:"PS5", date:"2020-11-12", score:92, scoreType:"critic", hltb:"30h", blurb:"Le remake somptueux de l'acte fondateur, idéal pour commencer."},
+            {slug:"elden-ring-s", title:"Elden Ring", plat:"PS5", date:"2022-02-25", score:96, scoreType:"critic", hltb:"60h", blurb:"L'Entre-terre en monde ouvert, synthèse de quinze ans de savoir-faire."}
           ]
         },
         {
@@ -959,22 +959,22 @@ const DATA = {
           name: "The Legend of Zelda",
           note: "Aucun ordre obligatoire. A Link to the Past pour la 2D, Ocarina of Time pour la 3D classique, Breath of the Wild pour la formule moderne.",
           games: [
-            {slug:"zelda-oot-s", title:"The Legend of Zelda: Ocarina of Time", plat:"N64", date:"1998-11-21", score:99, scoreType:"critic", hltb:"26h", blurb:"Le passage à la 3D qui a redéfini l'aventure tout entière."},
-            {slug:"zelda-botw-s", title:"The Legend of Zelda: Breath of the Wild", plat:"Switch", date:"2017-03-03", score:97, scoreType:"critic", hltb:"50h", blurb:"Hyrule ouvert et libre, réinvention totale de la série."},
-            {slug:"zelda-totk-s", title:"The Legend of Zelda: Tears of the Kingdom", plat:"Switch", date:"2023-05-12", score:96, scoreType:"critic", hltb:"60h", blurb:"Suite verticale et créative, bricolage érigé en système."},
             {slug:"zelda-alttp-s", title:"The Legend of Zelda: A Link to the Past", plat:"SNES", date:"1992-04-13", score:95, scoreType:"user", hltb:"15h", blurb:"Le modèle 2D définitif, deux mondes superposés."},
+            {slug:"zelda-oot-s", title:"The Legend of Zelda: Ocarina of Time", plat:"N64", date:"1998-11-21", score:99, scoreType:"critic", hltb:"26h", blurb:"Le passage à la 3D qui a redéfini l'aventure tout entière."},
             {slug:"zelda-mm-s", title:"The Legend of Zelda: Majora's Mask", plat:"N64", date:"2000-10-26", score:95, scoreType:"critic", hltb:"20h", blurb:"Trois jours en boucle à Termina, le plus singulier de tous."},
             {slug:"zelda-oracle-s", title:"The Legend of Zelda: Oracle of Seasons / Ages", plat:"GBC", date:"2001-05-14", score:91, scoreType:"critic", hltb:"16h", blurb:"Deux jeux complémentaires reliés par mot de passe, denses en énigmes."},
-            {slug:"zelda-albw-s", title:"The Legend of Zelda: A Link Between Worlds", plat:"3DS", date:"2013-11-22", score:91, scoreType:"critic", hltb:"16h", blurb:"Retour à Hyrule 2D avec une liberté d'ordre inédite."},
-            {slug:"zelda-ww-s", title:"The Legend of Zelda: The Wind Waker HD", plat:"WiiU", date:"2013-10-04", score:90, scoreType:"critic", hltb:"26h", blurb:"Le cel-shading intemporel et son océan, version rythmée."},
-            {slug:"zelda-ph-s", title:"The Legend of Zelda: Phantom Hourglass", plat:"DS", date:"2007-10-01", score:90, scoreType:"critic", hltb:"15h", blurb:"Suite directe de Wind Waker, entièrement jouée au stylet."},
-            {slug:"zelda-mc-s", title:"The Legend of Zelda: The Minish Cap", plat:"GBA", date:"2005-01-10", score:88, scoreType:"user", hltb:"11h", blurb:"Link rétrécit pour explorer un monde miniature."},
-            {slug:"zelda-la-s", title:"The Legend of Zelda: Link's Awakening", plat:"Switch", date:"2019-09-20", score:87, scoreType:"critic", hltb:"14h", blurb:"Le rêve de Cocolint en version miniature, remake très soigné."},
-            {slug:"zelda-st-s", title:"The Legend of Zelda: Spirit Tracks", plat:"DS", date:"2009-12-07", score:87, scoreType:"critic", hltb:"18h", blurb:"Link conducteur de train, accompagné du fantôme de Zelda."},
-            {slug:"zelda-tp-s", title:"The Legend of Zelda: Twilight Princess HD", plat:"WiiU", date:"2016-03-04", score:86, scoreType:"critic", hltb:"34h", blurb:"Le plus sombre des Zelda 3D, Link loup et crépuscule."},
             {slug:"zelda-fsa-s", title:"The Legend of Zelda: Four Swords Adventures", plat:"GC", date:"2004-06-07", score:86, scoreType:"critic", hltb:"15h", blurb:"Zelda coopératif à quatre Link, connecté aux Game Boy Advance."},
-            {slug:"zelda-eow-s", title:"The Legend of Zelda: Echoes of Wisdom", plat:"Switch", date:"2024-09-26", score:84, scoreType:"critic", hltb:"20h", blurb:"Zelda enfin jouable, résolution par copies d'objets et d'ennemis."},
-            {slug:"zelda-ss-s", title:"The Legend of Zelda: Skyward Sword HD", plat:"Switch", date:"2021-07-16", score:81, scoreType:"critic", hltb:"35h", blurb:"Les origines de la Master Sword, dirigiste mais riche en donjons."}
+            {slug:"zelda-mc-s", title:"The Legend of Zelda: The Minish Cap", plat:"GBA", date:"2005-01-10", score:88, scoreType:"user", hltb:"11h", blurb:"Link rétrécit pour explorer un monde miniature."},
+            {slug:"zelda-ph-s", title:"The Legend of Zelda: Phantom Hourglass", plat:"DS", date:"2007-10-01", score:90, scoreType:"critic", hltb:"15h", blurb:"Suite directe de Wind Waker, entièrement jouée au stylet."},
+            {slug:"zelda-st-s", title:"The Legend of Zelda: Spirit Tracks", plat:"DS", date:"2009-12-07", score:87, scoreType:"critic", hltb:"18h", blurb:"Link conducteur de train, accompagné du fantôme de Zelda."},
+            {slug:"zelda-ww-s", title:"The Legend of Zelda: The Wind Waker HD", plat:"WiiU", date:"2013-10-04", score:90, scoreType:"critic", hltb:"26h", blurb:"Le cel-shading intemporel et son océan, version rythmée."},
+            {slug:"zelda-albw-s", title:"The Legend of Zelda: A Link Between Worlds", plat:"3DS", date:"2013-11-22", score:91, scoreType:"critic", hltb:"16h", blurb:"Retour à Hyrule 2D avec une liberté d'ordre inédite."},
+            {slug:"zelda-tp-s", title:"The Legend of Zelda: Twilight Princess HD", plat:"WiiU", date:"2016-03-04", score:86, scoreType:"critic", hltb:"34h", blurb:"Le plus sombre des Zelda 3D, Link loup et crépuscule."},
+            {slug:"zelda-botw-s", title:"The Legend of Zelda: Breath of the Wild", plat:"Switch", date:"2017-03-03", score:97, scoreType:"critic", hltb:"50h", blurb:"Hyrule ouvert et libre, réinvention totale de la série."},
+            {slug:"zelda-la-s", title:"The Legend of Zelda: Link's Awakening", plat:"Switch", date:"2019-09-20", score:87, scoreType:"critic", hltb:"14h", blurb:"Le rêve de Cocolint en version miniature, remake très soigné."},
+            {slug:"zelda-ss-s", title:"The Legend of Zelda: Skyward Sword HD", plat:"Switch", date:"2021-07-16", score:81, scoreType:"critic", hltb:"35h", blurb:"Les origines de la Master Sword, dirigiste mais riche en donjons."},
+            {slug:"zelda-totk-s", title:"The Legend of Zelda: Tears of the Kingdom", plat:"Switch", date:"2023-05-12", score:96, scoreType:"critic", hltb:"60h", blurb:"Suite verticale et créative, bricolage érigé en système."},
+            {slug:"zelda-eow-s", title:"The Legend of Zelda: Echoes of Wisdom", plat:"Switch", date:"2024-09-26", score:84, scoreType:"critic", hltb:"20h", blurb:"Zelda enfin jouable, résolution par copies d'objets et d'ennemis."}
           ]
         }
       ]
