@@ -140,6 +140,7 @@
                   <span style="font-size:11px;color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{ it.dateLabel }}</span>
                   <span style="{{ it.scoreStyle }}">{{ it.scoreText }}</span>
                   <span style="{{ it.hltbStyle }}">{{ it.hltb }}</span>
+                  <span style="{{ it.rmStyle }}">{{ it.rmLabel }}</span>
                   <span style="{{ it.statusStyle }}">{{ it.statusLabel }}</span>
                   <span style="{{ it.myStyle }}">{{ it.myLabel }}</span>
                 </div>
@@ -187,6 +188,16 @@
           </div>
 
           <p style="font-size:14px;line-height:1.6;color:color-mix(in srgb, var(--color-text) 72%, transparent);margin:0">{{ sel.blurb }}</p>
+
+          <sc-if value="{{ sel.hasRemaster }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:11.2px;align-items:flex-start;padding:11.2px 14px;border-radius:8px;background:var(--color-neutral-900);border:1px solid var(--color-divider)">
+              <span style="font-size:15px;line-height:1.2">↻</span>
+              <div>
+                <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent);margin-bottom:4px">version plus moderne</div>
+                <div style="font-size:13px;line-height:1.55;color:color-mix(in srgb, var(--color-text) 75%, transparent)">{{ sel.remaster }}</div>
+              </div>
+            </div>
+          </sc-if>
 
           <div style="height:1px;background:linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent)"></div>
 
@@ -288,6 +299,18 @@ class Component extends DCLogic {
 
   hours(h) { const m = /(\d+)/.exec(h || ''); return m ? parseInt(m[1], 10) : 0; }
   hltbLabel(h) { return '⏳ ~' + this.hours(h) + ' h'; }
+  // Pastille "une version plus moderne existe" : affichée sur les onglets
+  // console, où l'on peut hésiter entre l'original et sa réédition.
+  rmStyle(g) {
+    if (!g.remasterOn) return { display: 'none' };
+    return {
+      fontSize: '10.5px', letterSpacing: '.03em', padding: '3px 8px',
+      borderRadius: '5px', whiteSpace: 'nowrap', fontWeight: 500,
+      border: '1px solid color-mix(in srgb, var(--color-accent) 45%, transparent)',
+      color: 'var(--color-accent-300)'
+    };
+  }
+
   // Pastille de plateforme : seuls les jeux des sagas la portent, les onglets
   // console n'en ont pas besoin puisque la machine est celle de l'onglet.
   platStyle(p) {
@@ -524,6 +547,8 @@ class Component extends DCLogic {
       dateLabel: this.fmtDate(g.date),
       plat: g.plat || '',
       platStyle: this.platStyle(g.plat),
+      rmLabel: g.remasterOn ? '↻ ' + g.remasterOn : '',
+      rmStyle: this.rmStyle(g),
       hltb: this.hltbLabel(g.hltb),
       hltbStyle: this.hltbStyle(),
       blurb: g.blurb,
@@ -581,6 +606,8 @@ class Component extends DCLogic {
       dateLabel: 'Sorti le ' + this.fmtDate(g.date),
       plat: g.plat || '',
       platStyle: this.platStyle(g.plat),
+      hasRemaster: !!g.remaster,
+      remaster: g.remaster || '',
       hltb: this.hltbLabel(g.hltb) + ' pour le finir',
       blurb: g.blurb,
       scoreText: sp.text,
