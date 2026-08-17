@@ -136,6 +136,7 @@
               <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5.6px">
                 <div style="{{ it.titleStyle }}">{{ it.title }}</div>
                 <div style="display:flex;flex-wrap:wrap;gap:5.6px;align-items:center">
+                  <span style="{{ it.platStyle }}">{{ it.plat }}</span>
                   <span style="font-size:11px;color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{ it.dateLabel }}</span>
                   <span style="{{ it.scoreStyle }}">{{ it.scoreText }}</span>
                   <span style="{{ it.hltbStyle }}">{{ it.hltb }}</span>
@@ -178,6 +179,7 @@
               <h3 style="font-size:20px;margin:0">{{ sel.title }}</h3>
               <div class="card-meta">{{ sel.dateLabel }}</div>
               <div style="display:flex;flex-wrap:wrap;gap:5.6px">
+                <span style="{{ sel.platStyle }}">{{ sel.plat }}</span>
                 <span style="{{ sel.scoreStyle }}">{{ sel.scoreText }}</span>
                 <span class="tag tag-outline">{{ sel.hltb }}</span>
               </div>
@@ -286,6 +288,18 @@ class Component extends DCLogic {
 
   hours(h) { const m = /(\d+)/.exec(h || ''); return m ? parseInt(m[1], 10) : 0; }
   hltbLabel(h) { return '⏳ ~' + this.hours(h) + ' h'; }
+  // Pastille de plateforme : seuls les jeux des sagas la portent, les onglets
+  // console n'en ont pas besoin puisque la machine est celle de l'onglet.
+  platStyle(p) {
+    if (!p) return { display: 'none' };
+    return {
+      fontSize: '10px', fontWeight: 600, letterSpacing: '.06em',
+      padding: '3px 7px', borderRadius: '5px', whiteSpace: 'nowrap',
+      fontFamily: 'var(--font-heading)',
+      background: 'var(--color-neutral-800)',
+      color: 'color-mix(in srgb, var(--color-text) 72%, transparent)'
+    };
+  }
   hltbStyle() {
     return {
       fontSize: '11px', letterSpacing: '.02em', padding: '3px 10px', borderRadius: '6px',
@@ -508,6 +522,8 @@ class Component extends DCLogic {
       step: this.pad(g._i + 1),
       title: g.title,
       dateLabel: this.fmtDate(g.date),
+      plat: g.plat || '',
+      platStyle: this.platStyle(g.plat),
       hltb: this.hltbLabel(g.hltb),
       hltbStyle: this.hltbStyle(),
       blurb: g.blurb,
@@ -563,6 +579,8 @@ class Component extends DCLogic {
       slotId: 'cover-' + this.state.ck + '-' + g.slug,
       title: g.title,
       dateLabel: 'Sorti le ' + this.fmtDate(g.date),
+      plat: g.plat || '',
+      platStyle: this.platStyle(g.plat),
       hltb: this.hltbLabel(g.hltb) + ' pour le finir',
       blurb: g.blurb,
       scoreText: sp.text,
