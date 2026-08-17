@@ -93,6 +93,21 @@
       </div>
     </div>
 
+    <sc-if value="{{ hasSagas }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:5.6px 0 16.8px">
+        <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 50%, transparent);margin-bottom:8.4px">sagas · de la moins bien notée à la mieux notée</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5.6px">
+          <sc-for list="{{ sagas }}" as="s" hint-placeholder-count="10">
+            <button onClick="{{ s.onPick }}" style="{{ s.style }}">
+              <span>{{ s.name }}</span>
+              <span style="{{ s.avgStyle }}">{{ s.avg }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="font-size:12.5px;line-height:1.6;max-width:70ch;text-wrap:pretty;color:color-mix(in srgb, var(--color-text) 60%, transparent);margin-top:11.2px">{{ sagaNote }}</div>
+      </div>
+    </sc-if>
+
     <div style="display:flex;flex-wrap:wrap;gap:11.2px 16.8px;align-items:center;padding-bottom:8.4px">
       <div class="seg">
         <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
@@ -213,7 +228,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;density&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;confort&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;confort&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;showBlurbs&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;},&quot;showScores&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Affichage&quot;}}">
 class Component extends DCLogic {
-  state = { data: null, ck: 'gba', sel: null, filter: 'tous', q: '', prog: {} };
+  state = { data: null, ck: 'gba', sel: null, filter: 'tous', q: '', prog: {}, saga: null };
 
   statusDefs = [
     { id: 'todo', label: 'À faire' },
@@ -250,6 +265,25 @@ class Component extends DCLogic {
   }
 
   cd() { return this.state.data ? this.state.data.consoles[this.state.ck] : null; }
+
+  // Un onglet "sagas" porte des séries au lieu d'une liste plate : les stats
+  // globales travaillent sur l'ensemble, l'affichage sur la saga choisie.
+  allGames(c) { return c.series ? c.series.reduce((a, s) => a.concat(s.games), []) : c.games; }
+  seriesAvg(s) {
+    const n = s.games.filter(g => g.score != null).map(g => g.score);
+    return n.length ? Math.round(n.reduce((a, b) => a + b, 0) / n.length) : 0;
+  }
+  sortedSeries() {
+    const cd = this.cd();
+    if (!cd || !cd.series) return [];
+    return cd.series.slice().sort((a, b) => this.seriesAvg(a) - this.seriesAvg(b));
+  }
+  currentSaga() {
+    const list = this.sortedSeries();
+    if (!list.length) return null;
+    return list.find(s => s.slug === this.state.saga) || list[0];
+  }
+
   hours(h) { const m = /(\d+)/.exec(h || ''); return m ? parseInt(m[1], 10) : 0; }
   hltbLabel(h) { return '⏳ ~' + this.hours(h) + ' h'; }
   hltbStyle() {
@@ -293,8 +327,10 @@ class Component extends DCLogic {
   visible() {
     const cd = this.cd();
     if (!cd) return [];
+    const saga = cd.series ? this.currentSaga() : null;
+    const base = cd.series ? (saga ? saga.games : []) : cd.games;
     const q = this.state.q.trim().toLowerCase();
-    let list = cd.games.map((g, i) => Object.assign({}, g, { _i: i }));
+    let list = base.map((g, i) => Object.assign({}, g, { _i: i }));
     if (q) list = list.filter(g => g.title.toLowerCase().indexOf(q) >= 0);
     if (this.state.filter !== 'tous') list = list.filter(g => (this.entry(this.state.ck + ':' + g.slug).status || 'todo') === this.state.filter);
     return list;
@@ -311,7 +347,8 @@ class Component extends DCLogic {
 
   renderVals() {
     const S = this.state, d = S.data, cd = this.cd();
-    const games = cd ? cd.games : [];
+    const games = cd ? this.allGames(cd) : [];
+    const saga = cd && cd.series ? this.currentSaga() : null;
     const dense = (this.props.density ?? 'confort') === 'compact';
     const showBlurbs = this.props.showBlurbs ?? true;
     const showScores = this.props.showScores ?? true;
@@ -319,11 +356,12 @@ class Component extends DCLogic {
 
     const consoles = d ? Object.values(d.consoles).map(c => {
       const active = c.key === S.ck;
-      const done = c.games.filter(g => this.entry(c.key + ':' + g.slug).status === 'done').length;
+      const cGames = this.allGames(c);
+      const done = cGames.filter(g => this.entry(c.key + ':' + g.slug).status === 'done').length;
       return {
         short: c.short, name: c.name,
-        meta: c.ready ? done + '/' + c.games.length : '—',
-        onPick: () => this.setState({ ck: c.key, sel: null, q: '', filter: 'tous' }),
+        meta: c.ready ? done + '/' + cGames.length : '—',
+        onPick: () => this.setState({ ck: c.key, sel: null, q: '', filter: 'tous', saga: null }),
         style: {
           display: 'flex', alignItems: 'center', gap: '8.4px', cursor: 'pointer',
           borderRadius: '8px', padding: '5px 13px 5px 6px', fontSize: '13px',
@@ -361,10 +399,12 @@ class Component extends DCLogic {
     }
 
     const header = cd ? {
-      title: cd.name,
-      sub: cd.ready
-        ? cd.games.length + ' jeux, dans l\'ordre où ils sont sortis. Chaque étape se lit, se note et se commente : l\'odyssée avance de gauche à droite dans le temps.'
-        : 'Console pas encore renseignée. Les titres viendront s\'ajouter ici, dans le même ordre chronologique.'
+      title: saga ? saga.name : cd.name,
+      sub: !cd.ready
+        ? 'Console pas encore renseignée. Les titres viendront s\'ajouter ici, dans le même ordre chronologique.'
+        : saga
+          ? saga.games.length + ' jeux à faire dans cet ordre. ' + (saga.note || '')
+          : games.length + ' jeux, dans l\'ordre où ils sont sortis. Chaque étape se lit, se note et se commente : l\'odyssée avance de gauche à droite dans le temps.'
     } : { title: '', sub: '' };
 
     const filters = [{ id: 'tous', label: 'Tout' }].concat(this.statusDefs)
@@ -372,13 +412,47 @@ class Component extends DCLogic {
 
     const list = this.visible();
     const groups = [];
-    list.forEach(g => {
-      const y = g.date.slice(0, 4);
-      let grp = groups[groups.length - 1];
-      if (!grp || grp.label !== y) { grp = { label: y, items: [] }; groups.push(grp); }
-      grp.items.push(this.item(g, dense, showBlurbs, showScores));
+    if (saga) {
+      // Une saga se lit dans l'ordre conseillé, pas par année : la colonne de
+      // gauche affiche donc la moyenne critique de la série.
+      if (list.length) {
+        groups.push({
+          label: String(this.seriesAvg(saga)),
+          sub: 'moyenne critique',
+          items: list.map(g => this.item(g, dense, showBlurbs, showScores))
+        });
+      }
+    } else {
+      list.forEach(g => {
+        const y = g.date.slice(0, 4);
+        let grp = groups[groups.length - 1];
+        if (!grp || grp.label !== y) { grp = { label: y, items: [] }; groups.push(grp); }
+        grp.items.push(this.item(g, dense, showBlurbs, showScores));
+      });
+      groups.forEach(g => { g.sub = g.items.length + (g.items.length > 1 ? ' étapes' : ' étape'); });
+    }
+
+    const sagas = this.sortedSeries().map(s => {
+      const active = saga && s.slug === saga.slug;
+      const sDone = s.games.filter(g => this.entry(S.ck + ':' + g.slug).status === 'done').length;
+      return {
+        name: s.name,
+        avg: sDone + '/' + s.games.length,
+        onPick: () => this.setState({ saga: s.slug, sel: null, q: '', filter: 'tous' }),
+        style: {
+          display: 'flex', alignItems: 'center', gap: '8.4px', cursor: 'pointer',
+          borderRadius: '8px', padding: '6px 11.2px', fontSize: '12.5px',
+          fontFamily: 'var(--font-heading)', fontWeight: 500,
+          background: active ? 'var(--color-accent-900)' : 'transparent',
+          border: '1px solid ' + (active ? 'var(--color-accent)' : 'var(--color-divider)'),
+          color: active ? 'var(--color-text)' : 'color-mix(in srgb, var(--color-text) 58%, transparent)'
+        },
+        avgStyle: {
+          fontSize: '10.5px', letterSpacing: '.04em', fontVariantNumeric: 'tabular-nums',
+          color: active ? 'var(--color-accent-300)' : muted
+        }
+      };
     });
-    groups.forEach(g => { g.sub = g.items.length + (g.items.length > 1 ? ' étapes' : ' étape'); });
 
     const heroGame = playing[0] || null;
     const hero = heroGame ? {
@@ -391,6 +465,8 @@ class Component extends DCLogic {
 
     return {
       consoles, header, filters, groups, hero, heroEmpty: !heroGame,
+      hasSagas: !!(cd && cd.series), sagas,
+      sagaNote: saga ? 'Progression sur cette saga : ' + saga.games.filter(g => this.entry(S.ck + ':' + g.slug).status === 'done').length + ' / ' + saga.games.length + ' terminés.' : '',
       q: S.q,
       onSearch: e => this.setState({ q: e.target.value }),
       stats: { pct: pct + ' %', tags: tags },
@@ -466,9 +542,11 @@ class Component extends DCLogic {
   selected() {
     const cd = this.cd();
     if (!cd || !this.state.sel) return null;
-    const g = cd.games.find(x => x.slug === this.state.sel);
+    const saga = cd.series ? this.currentSaga() : null;
+    const scope = saga ? saga.games : cd.games;
+    const g = scope.find(x => x.slug === this.state.sel);
     if (!g) return null;
-    const i = cd.games.indexOf(g);
+    const i = scope.indexOf(g);
     const uid = this.state.ck + ':' + g.slug;
     const e = this.entry(uid);
     const sp = this.score(g.score, g.scoreType);
@@ -480,8 +558,8 @@ class Component extends DCLogic {
       color: active ? 'var(--color-accent-100)' : 'color-mix(in srgb, var(--color-text) 60%, transparent)'
     });
     return {
-      step: 'étape ' + this.pad(i + 1) + ' / ' + cd.games.length,
-      consoleName: cd.name,
+      step: 'étape ' + this.pad(i + 1) + ' / ' + scope.length,
+      consoleName: saga ? saga.name : cd.name,
       slotId: 'cover-' + this.state.ck + '-' + g.slug,
       title: g.title,
       dateLabel: 'Sorti le ' + this.fmtDate(g.date),
